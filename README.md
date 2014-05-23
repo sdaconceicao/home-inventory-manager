@@ -16,4 +16,4 @@ Home Inventory Manager is a web application I built in anticipation of moving to
 
 ### Questions? ###
 
-* Contact Stephen da Conceicao @ stephen@stephenandrewdesigns.com
+* Contact [Stephen da Conceicao](mailto:stephen@stephenandrewdesigns.com)
