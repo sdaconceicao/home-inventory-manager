@@ -10,7 +10,7 @@ Home Inventory Manager is a web application I built in anticipation of moving to
 
 ### How do I get set up? ###
 
-* Run db.sql
+* Run create.sql
 * Move files into apache dir 
 
 
