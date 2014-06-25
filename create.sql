@@ -37,6 +37,7 @@ CREATE TABLE categories (
 
 CREATE TABLE subCategories (
    id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	category_id INT(10) NOT NULL,
-   name VARCHAR( 40 ) NOT NULL
+   category_id INT(10) NOT NULL,
+   name VARCHAR( 40 ) NOT NULL,
+   user_id int(10) NOT NULL
 );
