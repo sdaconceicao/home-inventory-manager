@@ -1,0 +1,8 @@
+{
+  "name": "home-inventory-manager",
+  "version": "0.1",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "components-font-awesome": "~4.4.0"
+  }
+}
