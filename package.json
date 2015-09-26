@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.25",
     "bower": "^1.5.2",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
