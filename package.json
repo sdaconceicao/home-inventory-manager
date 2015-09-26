@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "babel-loader": "^5.3.2",
     "bower": "^1.5.2",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
@@ -24,5 +25,8 @@
     "karma-webpack": "^1.7.0",
     "protractor": "^2.2.0",
     "webpack": "^1.12.0"
+  },
+  "scripts": {
+    "start": "gulp --gulpfile gulp.conf.js"
   }
 }

@@ -8,10 +8,13 @@ Home Inventory Manager is a web application I built in anticipation of moving to
 * Version 0.1
 
 
-### How do I get set up? ###
+### Setup ###
 
-* Run npm install
-* Run bower install
+1. Run npm install
+2. Run bower install
+
+### Startup ###
+1. Run npm start
 
 ### Questions? ###
 

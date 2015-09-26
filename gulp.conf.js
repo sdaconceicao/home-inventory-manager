@@ -33,7 +33,7 @@ var APP_DIR = './app',
     OUTPUT_FILE = 'scripts.js'
 ;
 
-gulp.task('webpack', function () {
+gulp.task('js', function () {
     console.log("Building JS");
     var wpconfig = WEBPACK_CONF;
     wpconfig.entry = ENTRY;
@@ -63,7 +63,7 @@ gulp.task('templates', function () {
                 return path.replace(base, '').replace('/templates', '');
             }
         }))
-        .pipe(gulp.dest(DIST_DIR));
+        .pipe(gulp.dest(APP_DIR));
 });
 
 gulp.task('sass', function (done) {
@@ -82,4 +82,4 @@ gulp.task('tdd', function (done) {
     }, done).start();
 });
 
-gulp.task('default', ['templates', 'webpack', 'sass', 'tdd']);
+gulp.task('default', ['templates', 'js', 'sass', 'tdd']);
