@@ -1,14 +1,14 @@
 'use strict';
 //Plugins
 var gulp = require('gulp'),
+    argv = require("yargs").argv,
     ngTemplates = require('gulp-ng-templates'),
     karmaServer = require('karma').Server,
     webpack = require('webpack'),
     gutil = require("gulp-util"),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     htmlmin = require('gulp-htmlmin'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
@@ -17,29 +17,36 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    del = require('del')
+    sourcemaps = require('gulp-sourcemaps'),
+    del = require('del'),
+    vendorConfig = require('./vendor.conf.js');
 ;
 
 //Directories/filenames
 var APP_DIR = './app',
     DIST_DIR = './dist',
-    VENDOR_DIR = './bower_components',
-    VENDOR_SCSS_FILES = VENDOR_DIR + '/**/*.scss',
-    APP_SCSS_FILES = [APP_DIR + '/components/**/*.scss', APP_DIR + '/modules/**/*.scss'],
-    APP_TEMPLATE_FILES = [APP_DIR + '/components/**/*.html', APP_DIR + '/modules/**/*.html'],
-    APP_JS_FILES = [APP_DIR + '/components/**/*.js', APP_DIR + '/modules/**/*.js'],
+    SCSS_MAIN_FILE = [APP_DIR + '/styles.scss'],
+    SCSS_WATCH_FILES = [SCSS_MAIN_FILE, APP_DIR + '/components/**/*.scss', APP_DIR + '/modules/**/*.scss'],
+    TEMPLATE_WATCH_FILES = [APP_DIR + '/components/**/*.html', APP_DIR + '/modules/**/*.html'],
     WEBPACK_CONF = require('./webpack.conf.js'),
-    ENTRY = './app/app.js',
-    OUTPUT_FILE = 'scripts.js'
+    JS_MAIN_FILE = './app/app.js',
+    JS_OUTPUT_FILE = 'scripts.min.js',
+    VENDOR_BUNDLER_FILES = vendorConfig().getVendorFileList(APP_DIR + '/', buildTarget),
+    VENDOR_OUTPUT_FILE = 'vendor.min.js'
 ;
+
+var buildTarget = argv.buildTarget || "local";
+var production = function () {
+    return buildTarget ==='production';
+};
 
 gulp.task('js', function () {
     console.log("Building JS");
     var wpconfig = WEBPACK_CONF;
-    wpconfig.entry = ENTRY;
+    wpconfig.entry = JS_MAIN_FILE;
     wpconfig.output = {
         path: DIST_DIR,
-        filename: OUTPUT_FILE
+        filename: JS_OUTPUT_FILE
     };
     webpack(wpconfig, function (err, stats) {
         if (err) {
@@ -52,9 +59,16 @@ gulp.task('js', function () {
     });
 });
 
+gulp.task('vendor', function () {
+    console.log("Building vendor js");
+    gulp.src(VENDOR_BUNDLER_FILES)
+        .pipe(concat(VENDOR_OUTPUT_FILE))
+        .pipe(gulp.dest(DIST_DIR));
+});
+
 gulp.task('templates', function () {
     console.log('Building $templateCache');
-    return gulp.src(APP_TEMPLATE_FILES)
+    return gulp.src(TEMPLATE_WATCH_FILES)
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(ngTemplates({
             filename: 'templates.js',
@@ -63,16 +77,28 @@ gulp.task('templates', function () {
                 return path.replace(base, '').replace('/templates', '');
             }
         }))
-        .pipe(gulp.dest(APP_DIR));
+        .pipe(gulp.dest(DIST_DIR));
+});
+
+gulp.task('watch-templates', function () {
+    console.log("Watching Templates");
+    gulp.watch(TEMPLATE_WATCH_FILES, ['templates']);
 });
 
 gulp.task('sass', function (done) {
     console.log('Compiling CSS');
-    return sass(APP_SCSS_FILES, {
-            sync: true,
-            outputStyle: 'compressed'
-        })
-    .pipe(gulp.dest(DIST_DIR + '/css'));
+    return sass(SCSS_MAIN_FILE)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: (production() ? 'compressed' : 'nested')
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(DIST_DIR + '/styles'));
+});
+
+gulp.task('watch-scss', function () {
+    console.log("Watching Scss");
+    gulp.watch(SCSS_WATCH_FILES, ['sass']);
 });
 
 gulp.task('tdd', function (done) {
@@ -82,4 +108,4 @@ gulp.task('tdd', function (done) {
     }, done).start();
 });
 
-gulp.task('default', ['templates', 'js', 'sass', 'tdd']);
+gulp.task('default', ['templates', 'vendor', 'js', 'sass']);
