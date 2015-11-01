@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     karmaServer = require('karma').Server,
     webpack = require('webpack'),
     gutil = require("gulp-util"),
-    sass = require('gulp-sass'),
+    sass = require('gulp-ruby-sass'),
     htmlmin = require('gulp-htmlmin'),
     autoprefixer = require('gulp-autoprefixer'),
     jshint = require('gulp-jshint'),
@@ -87,13 +87,9 @@ gulp.task('watch-templates', function () {
 
 gulp.task('sass', function (done) {
     console.log('Compiling CSS');
-    return sass(SCSS_MAIN_FILE)
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: (production() ? 'compressed' : 'nested')
-        }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(DIST_DIR + '/styles'));
+    return sass(SCSS_MAIN_FILE, { style: (production() ? 'compressed' : 'compressed') })
+        .pipe(autoprefixer('last 2 version'))
+        .pipe(gulp.dest(DIST_DIR));
 });
 
 gulp.task('watch-scss', function () {
