@@ -10,16 +10,18 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     autoprefixer = require('gulp-autoprefixer'),
     jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     sourcemaps = require('gulp-sourcemaps'),
+    preprocess = require('gulp-preprocess'),
     del = require('del'),
-    vendorConfig = require('./vendor.conf.js');
+    runSequence = require('run-sequence'),
+    vendorConfig = require('./vendor.conf.js'),
+    browserSync = require('browser-sync').create(),
+    historyApiFallback = require('connect-history-api-fallback');
 ;
 
 //Directories/filenames
@@ -27,6 +29,7 @@ var APP_DIR = './app',
     DIST_DIR = './dist',
     SCSS_MAIN_FILE = [APP_DIR + '/styles.scss'],
     SCSS_WATCH_FILES = [SCSS_MAIN_FILE, APP_DIR + '/components/**/*.scss', APP_DIR + '/modules/**/*.scss'],
+    IMG_FILES = [APP_DIR + '/images/**/*'],
     TEMPLATE_WATCH_FILES = [APP_DIR + '/components/**/*.html', APP_DIR + '/modules/**/*.html'],
     WEBPACK_CONF = require('./webpack.conf.js'),
     JS_MAIN_FILE = './app/app.js',
@@ -48,6 +51,27 @@ gulp.task('js', function () {
         path: DIST_DIR,
         filename: JS_OUTPUT_FILE
     };
+    webpack(wpconfig, function (err, stats) {
+        if (err) {
+            throw new gutil.PluginError('Error in Webpack bundle', err);
+        }
+        gutil.log('[webpack]', stats.toString({
+            colors: true,
+            chunks: false
+        }));
+    });
+});
+
+gulp.task('watch-js', function () {
+    console.log("Building JS Watch");
+    var wpconfig = WEBPACK_CONF;
+    wpconfig.entry = JS_MAIN_FILE;
+    wpconfig.output = {
+        path: DIST_DIR,
+        filename: JS_OUTPUT_FILE
+    };
+    wpconfig.watch = true;
+    wpconfig.devtool = 'source-map';
     webpack(wpconfig, function (err, stats) {
         if (err) {
             throw new gutil.PluginError('Error in Webpack bundle', err);
@@ -92,9 +116,59 @@ gulp.task('sass', function (done) {
         .pipe(gulp.dest(DIST_DIR));
 });
 
-gulp.task('watch-scss', function () {
+gulp.task('watch-sass', function () {
     console.log("Watching Scss");
     gulp.watch(SCSS_WATCH_FILES, ['sass']);
+});
+
+gulp.task('index', function(){
+    return gulp.src(APP_DIR + '/*.html')
+        .pipe(preprocess({
+            context: {
+                cacheBreakParam: (argv.noCacheBreak ? "" : "?d=" + Date.now()),
+                mobile: argv.mobile
+            }
+        }))
+        .pipe(gulp.dest(DIST_DIR));
+});
+
+gulp.task('watch-index', function () {
+    console.log("Watching Index");
+    gulp.watch(APP_DIR + '/index.html', ['index']);
+});
+
+gulp.task('img', function () {
+    console.log("Moving Images");
+    gulp.src(IMG_FILES)
+        .pipe(gulp.dest(DIST_DIR + '/images'));
+});
+
+gulp.task('watch-img', function(){
+    console.log("Watching Images");
+    gulp.watch(APP_DIR + '/images/**/*', ['img']);
+});
+
+gulp.task('browser-sync', function () {
+    console.log("Loading BrowserSync");
+
+    browserSync.init({
+        server: {
+            baseDir: [DIST_DIR],
+            middleware: [historyApiFallback()]
+        },
+        files: [DIST_DIR + '/**'],
+        port: 4142
+        }, function (err) {
+            if (err) {
+                console.log("BrowserSync Error");
+                gutil.beep();
+                gutil.log(gutil.colors.bgRed('Error'), err.message);
+                return this.end();
+            } else {
+                console.log("BrowserSync initialized");
+            }
+    });
+
 });
 
 gulp.task('tdd', function (done) {
@@ -104,4 +178,8 @@ gulp.task('tdd', function (done) {
     }, done).start();
 });
 
-gulp.task('default', ['templates', 'vendor', 'js', 'sass']);
+gulp.task('default', function (done) {
+    runSequence('index', 'img', 'templates', 'sass', 'vendor',
+        'watch-index', 'watch-img', 'watch-templates', 'watch-sass',  'watch-js',
+        'browser-sync', done);
+});

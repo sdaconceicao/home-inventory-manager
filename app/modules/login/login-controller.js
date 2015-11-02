@@ -7,7 +7,6 @@ var LoginCtrl = function(){
     angular.extend(ctrl, {
         user : null
     });
-
 };
 
 module.exports = [LoginCtrl];
