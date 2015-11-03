@@ -2,9 +2,10 @@
 'use strict';
 
 let templates = require('../dist/templates'),
+    components = require('./components/components'),
     login = require('./modules/login/login'),
     dependencies = ['ngAnimate', 'ui.router', 'mm.foundation',
-        'him.templates', login.name
+        'him.templates', components.name, login.name
     ]
 ;
 
