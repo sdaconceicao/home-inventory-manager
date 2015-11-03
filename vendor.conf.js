@@ -18,6 +18,7 @@ var VendorConfig = function () {
                     newDirPath + vendorPath + 'foundation/js/foundation/foundation.dropdown.js',
                     newDirPath + vendorPath + 'angular/angular.min.js',
                     newDirPath + vendorPath + 'angular-animate/angular-animate.min.js',
+                    newDirPath + vendorPath + 'angular-ui-router/release/angular-ui-router.min.js',
                     newDirPath + vendorPath + 'angular-foundation/mm-foundation.min.js',
                     newDirPath + vendorPath + 'angular-foundation/mm-foundation-tpls.min.js',
                     newDirPath + vendorPath + 'lodash/lodash.min.js'
@@ -32,6 +33,7 @@ var VendorConfig = function () {
                     newDirPath + vendorPath + 'foundation/js/foundation/foundation.dropdown.js',
                     newDirPath + vendorPath + 'angular/angular.js',
                     newDirPath + vendorPath + 'angular-animate/angular-animate.js',
+                    newDirPath + vendorPath + 'angular-ui-router/release/angular-ui-router.js',
                     newDirPath + vendorPath + 'angular-foundation/mm-foundation.js',
                     newDirPath + vendorPath + 'angular-foundation/mm-foundation-tpls.js',
                     newDirPath + vendorPath + 'lodash/lodash.js'
