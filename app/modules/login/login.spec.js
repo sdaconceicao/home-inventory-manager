@@ -7,7 +7,6 @@ describe('Login Module', function(){
         beforeEach(module('him.login'));
         beforeEach(inject(function(_$controller_){
             $controller = _$controller_;
-            $scope = {};
             ctrl = $controller('LoginCtrl', { $scope: $scope });
         }));
 

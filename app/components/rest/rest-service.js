@@ -1,4 +1,4 @@
-/* global module, angular, _ */
+/* global module, angular*/
 'use strict';
 
 class RestService{
