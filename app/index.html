@@ -12,7 +12,7 @@
 
             <li class="name">
                 <h1>
-                    <a href="#">
+                    <a ui-sref="home">
                         Home Inventory Manager
                     </a>
                 </h1>
@@ -36,7 +36,7 @@
                 <li class="divider"></li>
                 <li ng-if="!loggedIn"><a ui-sref="register">Register</a></li>
                 <li class="divider"></li>
-                <li ng-if="!loggedIn"><a>Login</a></li>
+                <li ng-if="!loggedIn"><a ui-sref="login">Login</a></li>
 
             </ul>
         </section>
