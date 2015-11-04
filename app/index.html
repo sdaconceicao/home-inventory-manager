@@ -6,12 +6,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body ng-app="him">
-<header ui-view="navigation">
+<header>
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+
+            <li class="name">
+                <h1>
+                    <a href="#">
+                        Home Inventory Manager
+                    </a>
+                </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+
+            <ul class="right">
+                <li class="divider"></li>
+                <li ng-if="loggedIn" class="has-dropdown">
+                    <a ng-ui="profile">My Account</a>
+                    <ul class="dropdown">
+                        <li><a ui-sref="profile.edit">My Profile</a></li>
+                        <li><a ui-sref="logout">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><a ui-sref="about"><span class="fa fa-question-circle"></span></a></li>
+                <li class="divider"></li>
+                <li ng-if="!loggedIn"><a ui-sref="register">Register</a></li>
+                <li class="divider"></li>
+                <li ng-if="!loggedIn"><a>Login</a></li>
+
+            </ul>
+        </section>
+    </nav>
 
 </header>
-<div id="main" ui-view="content"></div>
-<footer ui-view="footer">
-    Copyright 2015
+<div id="main" ui-view="content">
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <p>© Copyright 2015.</p>
+    </div>
 </footer>
 <script src="vendor.min.js"></script>
 <script src="scripts.min.js"></script>

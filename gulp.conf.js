@@ -35,7 +35,8 @@ var APP_DIR = './app',
     JS_MAIN_FILE = './app/app.js',
     JS_OUTPUT_FILE = 'scripts.min.js',
     VENDOR_BUNDLER_FILES = vendorConfig().getVendorFileList(APP_DIR + '/', buildTarget),
-    VENDOR_OUTPUT_FILE = 'vendor.min.js'
+    VENDOR_OUTPUT_FILE = 'vendor.min.js',
+    FONT_FILES = [APP_DIR + '/vendor/components-font-awesome/fonts/*']
 ;
 
 var buildTarget = argv.buildTarget || "local";
@@ -148,6 +149,17 @@ gulp.task('watch-img', function(){
     gulp.watch(APP_DIR + '/images/**/*', ['img']);
 });
 
+gulp.task('fonts', function () {
+    console.log("Moving Fonts");
+    gulp.src(FONT_FILES)
+        .pipe(gulp.dest(DIST_DIR + '/fonts'));
+});
+
+gulp.task('watch-fonts', function(){
+    console.log("Watching Fontsxw");
+    gulp.watch(FONT_FILES, ['fonts']);
+});
+
 gulp.task('browser-sync', function () {
     console.log("Loading BrowserSync");
 
@@ -179,7 +191,7 @@ gulp.task('tdd', function (done) {
 });
 
 gulp.task('default', function (done) {
-    runSequence('index', 'img', 'templates', 'sass', 'vendor',
-        'watch-index', 'watch-img', 'watch-templates', 'watch-sass',  'watch-js',
+    runSequence('index', 'img', 'templates', 'sass', 'fonts', 'vendor',
+        'watch-index', 'watch-img', 'watch-templates', 'watch-sass', 'watch-fonts', 'watch-js',
         'browser-sync', done);
 });
