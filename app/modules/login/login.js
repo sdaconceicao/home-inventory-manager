@@ -13,7 +13,7 @@ module.exports = angular.module('him.login', [])
             views: {
                 'content@': {
                     templateUrl: 'login/login.html',
-                    controller: 'LoginCtrl as vm'
+                    controller: 'LoginCtrl as ctrl'
                 }
             },
             data: {}

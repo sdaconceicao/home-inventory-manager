@@ -7,41 +7,7 @@
 </head>
 <body ng-app="him">
 <header>
-    <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-
-            <li class="name">
-                <h1>
-                    <a ui-sref="home">
-                        Home Inventory Manager
-                    </a>
-                </h1>
-            </li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-        </ul>
-
-        <section class="top-bar-section">
-
-            <ul class="right">
-                <li class="divider"></li>
-                <li ng-if="loggedIn" class="has-dropdown">
-                    <a ng-ui="profile">My Account</a>
-                    <ul class="dropdown">
-                        <li><a ui-sref="profile.edit">My Profile</a></li>
-                        <li><a ui-sref="logout">Logout</a></li>
-                    </ul>
-                </li>
-                <li class="divider"></li>
-                <li><a ui-sref="about"><span class="fa fa-question-circle"></span></a></li>
-                <li class="divider"></li>
-                <li ng-if="!loggedIn"><a ui-sref="register">Register</a></li>
-                <li class="divider"></li>
-                <li ng-if="!loggedIn"><a ui-sref="login">Login</a></li>
-
-            </ul>
-        </section>
-    </nav>
-
+    <nav-menu role="navigation"></nav-menu>
 </header>
 <div id="main" ui-view="content">
 </div>

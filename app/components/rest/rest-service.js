@@ -7,8 +7,7 @@ class RestService{
         this.q = $q;
     }
     call(config){
-        var deferred = this.q.defer(), svc = this;
-
+        let deferred = this.q.defer(), svc = this;
         this.http(config)
             .then( function(response) {
                 svc.successHandler(deferred, config, response)
@@ -20,17 +19,16 @@ class RestService{
         return deferred.promise;
     }
     successHandler(deferred, config, response){
-        if (response.data.status !== 'ok'){
+        if (response.status !== 200){
             this.errorHandler(deferred, config);
         }
-        deferred.resolve(response);
+        deferred.resolve(response.data);
     }
     errorHandler(deferred, config, response){
         deferred.reject(response);
     }
-
 }
 
-module.exports = angular.module('him.components.rest', [])
+module.exports = angular.module('pub.components.rest', [])
     .service('RestService', RestService)
 ;
