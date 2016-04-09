@@ -17,6 +17,7 @@ var VendorConfig = function () {
                     newDirPath + vendorPath + 'angular-animate/angular-animate.min.js',
                     newDirPath + vendorPath + 'angular-ui-router/release/angular-ui-router.min.js',
                     newDirPath + vendorPath + 'angular-bootstrap/ui-bootstrap-tpls.min.js',
+                    newDirPath + vendorPath + 'satellizer/satellizer.min.js',
                     newDirPath + vendorPath + 'lodash/lodash.min.js'
                 ],
                 devVendorList = [
@@ -28,6 +29,7 @@ var VendorConfig = function () {
                     newDirPath + vendorPath + 'angular-animate/angular-animate.js',
                     newDirPath + vendorPath + 'angular-ui-router/release/angular-ui-router.js',
                     newDirPath + vendorPath + 'angular-bootstrap/ui-bootstrap-tpls.js',
+                    newDirPath + vendorPath + 'satellizer/satellizer.js',
                     newDirPath + vendorPath + 'lodash/lodash.js'
 
                 ];

@@ -6,7 +6,7 @@ let templates = require('../dist/templates'),
     home = require('./modules/home/home'),
     login = require('./modules/login/login'),
     navMenu = require('./modules/nav-menu/nav-menu-directive'),
-    dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap',
+    dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer',
         'him.templates', components.name, home.name, login.name, navMenu.name
     ]
 ;
