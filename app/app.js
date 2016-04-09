@@ -12,13 +12,19 @@ let templates = require('../dist/templates'),
 ;
 
 angular.module('him', dependencies)
-    .config(['$locationProvider', '$urlRouterProvider', '$compileProvider',
-        function($locationProvider, $urlRouterProvider, $compileProvider){
+    .config(/* @ngInject */($locationProvider, $urlRouterProvider, $compileProvider, $authProvider)=>{
         $locationProvider.html5Mode({enabled: true, requireBase: false});
         $urlRouterProvider.otherwise('/home');
         $compileProvider.debugInfoEnabled(false);
-    }])
-    .run(['$templateCache', function ($templateCache){
+        $authProvider.facebook({
+            clientId: 'Facebook App ID',
+            responseType: 'token'
+        });
+        $authProvider.google({
+            clientId: 'Google Client ID'
+        });
+    })
+    .run(/* @ngInject */ ($templateCache)=>{
 
-    }])
+    })
 ;

@@ -2,8 +2,9 @@
 'use strict';
 
 class LoginCtrl {
-    constructor($state, LoginService){
+    constructor($state, $auth, LoginService){
         this.state = $state;
+        this.auth = $auth;
         this.LoginService = LoginService;
     }
     toString(){
@@ -18,6 +19,9 @@ class LoginCtrl {
     login (){
         this.LoginService.login({username: this.username, password: this.password}).
             then(this.onSuccess.bind(this), this.onError.bind(this));
+    }
+    authenticate(provider){
+        this.auth.authenticate(provider);
     }
 }
 
