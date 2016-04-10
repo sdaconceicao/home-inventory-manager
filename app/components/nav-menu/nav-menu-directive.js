@@ -10,6 +10,6 @@ function navMenu($window){
     };
 }
 
-module.exports = angular.module('pub.navMenu', [])
+module.exports = angular.module('him.navMenu', [])
     .directive('navMenu', navMenu)
 ;;

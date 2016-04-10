@@ -2,6 +2,7 @@
 'use strict';
 
 class LoginCtrl {
+    /* @ngInject */
     constructor($state, $auth, LoginService){
         this.state = $state;
         this.auth = $auth;

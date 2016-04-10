@@ -2,6 +2,7 @@
 'use strict';
 
 class RestService{
+    /* @ngInject */
     constructor($http, $q){
         this.http = $http;
         this.q = $q;
@@ -29,6 +30,6 @@ class RestService{
     }
 }
 
-module.exports = angular.module('pub.components.rest', [])
+module.exports = angular.module('him.components.rest', [])
     .service('RestService', RestService)
 ;
