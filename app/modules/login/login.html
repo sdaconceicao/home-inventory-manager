@@ -1,0 +1,8 @@
+<form name="loginForm" ng-submit="ctrl.login();">
+    <label forId="email">Email Address</label>
+    <input name="email" type="text" ng-model="ctrl.email" />
+    <label forId="password">Password</label>
+    <input name="password" type="password" ng-model="ctrl.password" />
+    <button type="submit">Login</button>
+    <button type="button" ng-click="ctrl.authenticate('facebook')">Sign in with Facebook</button>
+</form>
