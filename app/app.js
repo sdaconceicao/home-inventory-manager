@@ -1,13 +1,14 @@
 /* global module, require */
 'use strict';
 
-let oath = require('./config/constants.js'),
+let oath = require('./config/oath.js'),
     templates = require('../dist/templates'),
     components = require('./components/components'),
     home = require('./modules/home/home'),
     login = require('./modules/login/login'),
+    dashboard = require('./modules/dashboard/dashboard'),
     dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer',
-        'him.templates', components.name, home.name, login.name
+        'him.templates', components.name, home.name, login.name, dashboard.name
     ]
 ;
 
