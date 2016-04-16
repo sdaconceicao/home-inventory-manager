@@ -6,9 +6,10 @@ let oath = require('./config/oath.js'),
     components = require('./components/components'),
     home = require('./modules/home/home'),
     login = require('./modules/login/login'),
+    register = require('./modules/register/register'),
     dashboard = require('./modules/dashboard/dashboard'),
     dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer',
-        'him.templates', components.name, home.name, login.name, dashboard.name
+        'him.templates', components.name, home.name, login.name, dashboard.name, register.name
     ]
 ;
 

@@ -7,6 +7,7 @@ class LoginCtrl {
         this.state = $state;
         this.auth = $auth;
         this.LoginService = LoginService;
+        this.inputType = 'password';
     }
     toString(){
         return 'LoginCtrl';
