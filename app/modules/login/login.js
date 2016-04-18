@@ -16,7 +16,9 @@ module.exports = angular.module('him.login', [])
                     controller: 'LoginCtrl as ctrl'
                 }
             },
-            data: {}
+            data: {
+                requireLogin: false
+            }
         })
     }])
     .controller('LoginCtrl', ctrl)

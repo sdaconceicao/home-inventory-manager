@@ -15,7 +15,9 @@ module.exports = angular.module('him.register', [])
                         controller: 'RegisterCtrl as ctrl'
                     }
                 },
-                data: {}
+                data: {
+                    requireLogin: false
+                }
             })
     }])
     .controller('RegisterCtrl', ctrl)

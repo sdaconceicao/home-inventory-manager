@@ -11,7 +11,9 @@ module.exports = angular.module('him.home', [])
                         templateUrl: 'home/home.html'
                     }
                 },
-                data: {}
+                data: {
+                    requireLogin: false
+                }
             })
     }])
 ;

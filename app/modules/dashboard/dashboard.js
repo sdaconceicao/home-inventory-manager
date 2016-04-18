@@ -7,7 +7,7 @@ let ctrl = require('./dashboard-controller')
 module.exports = angular.module('him.dashboard', [])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
-            .state('dashboard', {
+            .state('app.dashboard', {
                 url: '/dashboard',
                 views: {
                     'content@': {

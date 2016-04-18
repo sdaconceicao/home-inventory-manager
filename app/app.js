@@ -15,7 +15,8 @@ let oath = require('./config/oath.js'),
 
 angular.module('him', dependencies)
     .constant('oath', oath)
-    .config(/* @ngInject */($locationProvider, $urlRouterProvider, $compileProvider, $authProvider, oath)=>{
+    .config(/* @ngInject */($locationProvider, $urlRouterProvider, $compileProvider, $authProvider, $stateProvider, $httpProvider,
+                            oath)=>{
         $locationProvider.html5Mode({enabled: true, requireBase: false});
         $urlRouterProvider.otherwise('/home');
         $compileProvider.debugInfoEnabled(false);
@@ -23,6 +24,13 @@ angular.module('him', dependencies)
             clientId: oath.facebookId,
             responseType: 'token'
         });
+        $stateProvider.state('app', {
+            abstract: true,
+            data: {
+                requireLogin: true
+            }
+        });
+        $httpProvider.interceptors.push('SessionInjector');
     })
     .run(/* @ngInject */ ($templateCache)=>{
 
