@@ -10,12 +10,12 @@ class SessionService{
     startSession(user){
         this.session.loggedIn = true;
         this.session.sessionId = result.sessionId;
-        this.session.user = user;
+        this.setUser(user);
     }
     resetSession(){
         this.session = {
             loggedIn: false,
-            sessionId: null,
+            sessionId: null
         };
     }
     getSession(){
@@ -28,10 +28,10 @@ class SessionService{
         this.token = token;
     }
     getUser(){
-        return this.user;
+        return this.session.user;
     }
     setUser(user){
-        this.user = user;
+        this.session.user = user;
     }
 }
 
