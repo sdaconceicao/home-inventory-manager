@@ -3,7 +3,7 @@
 
 class LoginCtrl {
     /* @ngInject */
-    constructor($state, $auth, LoginService){
+    constructor($state, $auth, SessionService, LoginService){
         this.state = $state;
         this.auth = $auth;
         this.LoginService = LoginService;
@@ -12,15 +12,18 @@ class LoginCtrl {
     toString(){
         return 'LoginCtrl';
     }
-    onSuccess(result){
-        this.state.go('/dashboard')
+    onSuccess(user){
+        this.SessionService.startSession(user).then(()=>{
+            this.state.go('/dashboard');
+        });
     }
-    onError(result){
-        this.error = result;
+    onError(error){
+        console.error(this.toString() + ' onError', error);
+        this.error = error;
     }
     login (){
-        this.LoginService.login({username: this.username, password: this.password}).
-            then(this.onSuccess.bind(this), this.onError.bind(this));
+        this.LoginService.login(this.credentials).
+            then((user)=>this.onSuccess(user), (error)=>this.onError(error));
     }
     authenticate(provider){
         this.auth.authenticate(provider);

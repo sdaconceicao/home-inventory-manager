@@ -1,8 +1,8 @@
-<form name="loginForm" ng-submit="ctrl.login();">
+<form name="loginForm" ng-submit="ctrl.login();" >
     <label for="email">Email Address</label>
-    <input id="email" name="email" type="text" ng-model="ctrl.email" />
+    <input id="email" name="email" type="text" ng-model="ctrl.credentials.email" />
     <label for="password">Password</label>
-    <input id="password" name="password" type="{{ctrl.inputType}}" ng-model="ctrl.password" />
+    <input id="password" name="password" type="{{ctrl.inputType}}" ng-model="ctrl.credentials.password" />
     <input id="showPassword" name="showPassword" type="checkbox"
            ng-model="ctrl.inputType"
            ng-true-value="'text'"

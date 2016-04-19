@@ -9,14 +9,11 @@ class LoginService {
     toString(){
         return 'LoginService';
     }
-    login(user){
+    login(credentials){
         return this.RestService.call(
             {
                 url: '/login',
-                params: {
-                    username: user.username,
-                    password: user.password
-                }
+                params: credentials
             }
         );
     }

@@ -30,7 +30,7 @@ angular.module('him', dependencies)
                 requireLogin: true
             }
         });
-        $httpProvider.interceptors.push('SessionInjector');
+        //$httpProvider.interceptors.push('SessionInjector');
     })
     .run(/* @ngInject */ ($templateCache)=>{
 
