@@ -3,8 +3,9 @@
 
 
 class LoginService {
-    constructor(RestService){
+    constructor(RestService, uri){
         this.RestService = RestService;
+        this.uri = uri;
     }
     toString(){
         return 'LoginService';
@@ -12,8 +13,9 @@ class LoginService {
     login(credentials){
         return this.RestService.call(
             {
-                url: '/login',
-                params: credentials
+                method: 'POST',
+                url: this.uri.api + '/Users/login',
+                data: credentials
             }
         );
     }

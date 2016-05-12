@@ -9,7 +9,7 @@ class SessionService{
     }
     startSession(user){
         this.session.loggedIn = true;
-        this.session.sessionId = result.sessionId;
+        this.session.sessionId = user.id;
         this.setUser(user);
     }
     resetSession(){

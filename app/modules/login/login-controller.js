@@ -7,15 +7,16 @@ class LoginCtrl {
         this.state = $state;
         this.auth = $auth;
         this.LoginService = LoginService;
+        this.SessionService = SessionService;
         this.inputType = 'password';
     }
     toString(){
         return 'LoginCtrl';
     }
     onSuccess(user){
-        this.SessionService.startSession(user).then(()=>{
-            this.state.go('/dashboard');
-        });
+        console.log(this.toString() + 'onSuccess()', user);
+        this.SessionService.startSession(user);
+        this.state.go('app.dashboard');
     }
     onError(error){
         console.error(this.toString() + ' onError', error);
