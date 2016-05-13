@@ -13,9 +13,9 @@ class LogoutCtrl {
     }
 
     logout (){
-        this.$uibModalInstance.close();
         this.LogoutService.logout()
             .then(()=>{
+                this.$uibModalInstance.close();
                 this.state.go('home');
             })
             .catch((e)=>{
