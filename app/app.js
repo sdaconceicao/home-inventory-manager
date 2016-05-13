@@ -37,7 +37,13 @@ angular.module('him', dependencies)
         });
         //$httpProvider.interceptors.push('SessionInjector');
     })
-    .run(/* @ngInject */ ($templateCache)=>{
+    .run(/* @ngInject */ ($templateCache, $rootScope, SessionService)=>{
+        $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
+            let requireLogin = toState.data.requireLogin;
 
+            if (requireLogin && SessionService.getUser() === undefined) {
+                event.preventDefault();
+            }
+        });
     })
 ;

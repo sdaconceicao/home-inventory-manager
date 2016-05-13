@@ -14,7 +14,7 @@ class LoginService {
         return this.RestService.call(
             {
                 method: 'POST',
-                url: this.uri.api + '/Users/login',
+                url: this.uri.api + '/users/login?include=user',
                 data: credentials
             }
         );
