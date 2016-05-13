@@ -7,17 +7,19 @@ let oath = require('./config/oath'),
     components = require('./components/components'),
     home = require('./modules/home/home'),
     login = require('./modules/login/login'),
+    logout = require('./modules/logout/logout'),
     register = require('./modules/register/register'),
     dashboard = require('./modules/dashboard/dashboard'),
-    dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer',
+    dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage',
         'him.templates',
-        components.name, home.name, login.name, dashboard.name, register.name
+        components.name, home.name, login.name, logout.name, dashboard.name, register.name
     ]
 ;
 
 angular.module('him', dependencies)
     .constant('oath', oath)
     .constant('uri', uri)
+    .constant('modals', {})
     .config(/* @ngInject */($locationProvider, $urlRouterProvider, $compileProvider, $authProvider, $stateProvider, $httpProvider,
                             oath)=>{
         $locationProvider.html5Mode({enabled: true, requireBase: false});

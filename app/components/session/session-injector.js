@@ -2,7 +2,7 @@
 var SessionInjector = (SessionService)=> {
     return {
         request: function(config) {
-            config.headers['x-session-token'] = SessionService.getToken();
+            config.headers['ACCESS_TOKEN'] = SessionService.getSession().id;
             return config;
         },
         responseError: (rejection) =>{

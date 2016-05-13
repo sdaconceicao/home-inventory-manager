@@ -21,7 +21,7 @@ class RestService{
         return deferred.promise;
     }
     successHandler(deferred, config, response){
-        if (response.status !== 200){
+        if (response.status >= 205){
             this.errorHandler(deferred, config);
         }
         deferred.resolve(response.data);
