@@ -21,7 +21,7 @@ class SessionService{
     resetSession(){
         this.$sessionStorage.session = {
             loggedIn: false,
-            sessionId: null
+            sessionId: null,
         };
     }
 

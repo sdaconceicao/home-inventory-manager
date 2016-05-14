@@ -9,7 +9,7 @@ class ModalCtrl{
     }
 
     close(){
-        this.modalInstance.dismiss('cancel');
+        this.instance.dismiss('cancel');
     }
 }
 
@@ -23,8 +23,8 @@ const modal = /* @ngInject */() =>{
         controllerAs: 'ctrl',
         bindToController: true,
         scope: {
-            enableClose: '=',
-            modalInstance: '='
+            instance: '=',
+            enableClose: '='
         }
     };
 };

@@ -3,9 +3,10 @@
 
 class LogoutCtrl {
     /* @ngInject */
-    constructor($state, $uibModalInstance, LogoutService){
+    constructor($state, $uibModalInstance, SessionService, LogoutService){
         this.state = $state;
         this.$uibModalInstance = $uibModalInstance;
+        this.SessionService = SessionService;
         this.LogoutService = LogoutService;
     }
     toString(){
@@ -15,6 +16,7 @@ class LogoutCtrl {
     logout (){
         this.LogoutService.logout()
             .then(()=>{
+                this.SessionService.resetSession();
                 this.$uibModalInstance.close();
                 this.state.go('home');
             })

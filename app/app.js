@@ -8,11 +8,10 @@ let oath = require('./config/oath'),
     home = require('./modules/home/home'),
     login = require('./modules/login/login'),
     logout = require('./modules/logout/logout'),
-    register = require('./modules/register/register'),
     dashboard = require('./modules/dashboard/dashboard'),
     dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage',
         'him.templates',
-        components.name, home.name, login.name, logout.name, dashboard.name, register.name
+        components.name, home.name, login.name, logout.name, dashboard.name
     ]
 ;
 

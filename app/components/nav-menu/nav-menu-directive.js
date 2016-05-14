@@ -12,11 +12,13 @@ class NavMenuCtrl{
     }
 
     loginModal() {
-        this.$uibModal.open(this.loginConfig);
+        this.instance = this.$uibModal.open(this.loginConfig);
+        this.loginConfig.instance = this.instance;
     }
 
     logoutModal() {
-        this.$uibModal.open(this.logoutConfig);
+        this.instance = this.$uibModal.open(this.logoutConfig);
+        this.logoutConfig.instance = this.instance;
     }
 
 }

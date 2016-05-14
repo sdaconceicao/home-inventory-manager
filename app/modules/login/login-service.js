@@ -19,6 +19,15 @@ class LoginService {
             }
         );
     }
+    register(params){
+        return this.RestService.call(
+            {
+                method: 'POST',
+                url: this.uri.api + '/users',
+                data: params
+            }
+        );
+    }
 }
 
 module.exports = LoginService;
