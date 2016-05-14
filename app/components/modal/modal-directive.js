@@ -24,7 +24,7 @@ const modal = /* @ngInject */() =>{
         bindToController: true,
         scope: {
             instance: '=',
-            enableClose: '='
+            enableClose: '=?'
         }
     };
 };
