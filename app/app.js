@@ -19,7 +19,6 @@ let oath = require('./config/oath'),
 angular.module('him', dependencies)
     .constant('oath', oath)
     .constant('uri', uri)
-    .constant('modals', {})
     .config(/* @ngInject */($locationProvider, $urlRouterProvider, $compileProvider, $authProvider, $stateProvider, $httpProvider,
                             oath)=>{
         $locationProvider.html5Mode({enabled: true, requireBase: false});

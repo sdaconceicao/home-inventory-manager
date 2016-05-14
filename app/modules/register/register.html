@@ -1,8 +1,8 @@
 <form name="registerForm" ng-submit="ctrl.signUp();">
     <label for="email">Email Address</label>
-    <input id="email" name="email" type="text" ng-model="ctrl.email" />
+    <input id="email" name="email" type="text" ng-model="ctrl.user.email" />
     <label for="password">Password</label>
-    <input id="password" name="password" type="{{ctrl.inputType}}" ng-model="ctrl.password" />
+    <input id="password" name="password" type="{{ctrl.inputType}}" ng-model="ctrl.user.password" />
     <input id="showPassword" name="showPassword" type="checkbox"
            ng-model="ctrl.inputType"
            ng-true-value="'text'"

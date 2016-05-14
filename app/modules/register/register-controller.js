@@ -3,8 +3,9 @@
 
 class RegisterCtrl {
     /* @ngInject */
-    constructor($state){
+    constructor($state, RegisterService){
         this.state = $state;
+        this.RegisterService = RegisterService;
         this.inputType = 'password';
     }
     toString(){
@@ -16,8 +17,8 @@ class RegisterCtrl {
     onError(result){
         this.error = result;
     }
-    signUp (){
-
+    register (){
+        this.RegisterService.register(this.user)
     }
     passwordToggle(){
 
