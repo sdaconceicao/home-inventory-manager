@@ -1,8 +1,9 @@
 'use strict';
 
 class SessionService{
-    constructor($sessionStorage){
+    constructor($sessionStorage, EventMediator){
         this.$sessionStorage = $sessionStorage;
+        this.EventMediator = EventMediator;
         if (!this.getSession()){
             this.resetSession();
         }
@@ -16,6 +17,8 @@ class SessionService{
         this.$sessionStorage.session.loggedIn = true;
         this.$sessionStorage.session.sessionId = response.id;
         this.setUser(response.user);
+        this.EventMediator.emit('session-updated', this.$sessionStorage.session );
+
     }
 
     resetSession(){
@@ -23,6 +26,7 @@ class SessionService{
             loggedIn: false,
             sessionId: null,
         };
+        this.EventMediator.emit('session-updated', this.$sessionStorage.session );
     }
 
     getSession(){

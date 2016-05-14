@@ -2,13 +2,27 @@
 'use strict';
 
 class NavMenuCtrl{
-    constructor(SessionService, $uibModal, logoutConfig, loginConfig){
+    /* @ngInject */
+    constructor($uibModal, $rootScope,
+                SessionService, EventMediator,
+                logoutConfig, loginConfig){
         this.SessionService = SessionService;
+        this.EventMediator = EventMediator;
         this.$uibModal = $uibModal;
+        this.$rootScope = $rootScope;
         this.logoutConfig = logoutConfig;
         this.loginConfig = loginConfig;
-        this.session = this.SessionService.getSession();
-        this.loggedIn = this.session.loggedIn;
+        this.loggedIn = this.SessionService.getSession().loggedIn;
+        this.EventMediator.subscribe(this.$rootScope, 'session-updated', (session) => this.onSessionUpdated(session) );
+    }
+
+    toString(){
+        return "NavMenuCtrl";
+    }
+
+    onSessionUpdated(session){
+        console.log(this.toString() + "onSessionUpdated()", session);
+        this.loggedIn =  this.SessionService.getSession().loggedIn;
     }
 
     loginModal() {
@@ -21,12 +35,12 @@ class NavMenuCtrl{
 
 }
 
-const navMenu = (SessionService, $uibModal, logoutConfig) => {
+const navMenu = /* @ngInject */() => {
     return {
         templateUrl: 'nav-menu/nav-menu.html',
         restrict: 'E',
         replace: true,
-        controller: ['SessionService', '$uibModal', 'logoutConfig', 'loginConfig', NavMenuCtrl],
+        controller: NavMenuCtrl,
         controllerAs: 'ctrl',
         bindToController: true
     };
