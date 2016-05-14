@@ -13,12 +13,10 @@ class NavMenuCtrl{
 
     loginModal() {
         this.instance = this.$uibModal.open(this.loginConfig);
-        this.loginConfig.instance = this.instance;
     }
 
     logoutModal() {
         this.instance = this.$uibModal.open(this.logoutConfig);
-        this.logoutConfig.instance = this.instance;
     }
 
 }
