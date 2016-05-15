@@ -35,14 +35,18 @@ angular.module('him', dependencies)
                 requireLogin: true
             }
         });
-        //$httpProvider.interceptors.push('SessionInjector');
+        $httpProvider.interceptors.push('SessionInjector');
     })
-    .run(/* @ngInject */ ($templateCache, $rootScope, SessionService)=>{
+    .run(/* @ngInject */ ($templateCache, $rootScope, $state, $uibModal,
+                          SessionService,
+                          loginConfig)=>{
         $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
             let requireLogin = toState.data.requireLogin;
 
-            if (requireLogin && SessionService.getUser() === undefined) {
+            if (requireLogin && !SessionService.getSession().loggedIn) {
                 event.preventDefault();
+                $state.go('home');
+                $uibModal.open(loginConfig);
             }
         });
     })
