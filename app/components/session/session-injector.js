@@ -2,9 +2,7 @@
 var SessionInjector = (SessionService)=> {
     return {
         request: function(config) {
-            console.log('config', config);
             config.headers['X-Access-Token'] = SessionService.getSession().sessionId;
-            console.log('config after', config);
             return config;
         },
         responseError: (rejection) =>{
