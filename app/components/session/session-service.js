@@ -30,7 +30,7 @@ class SessionService{
     }
 
     getSession(){
-        console.log(this.toString() + ' getSession()', this.$sessionStorage.session);
+        //console.log(this.toString() + ' getSession()', this.$sessionStorage.session);
         return this.$sessionStorage.session;
     }
 

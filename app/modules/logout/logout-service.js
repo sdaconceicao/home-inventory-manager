@@ -3,9 +3,8 @@
 
 
 class LogoutService {
-    constructor(RestService, SessionService, uri){
+    constructor(RestService, uri){
         this.RestService = RestService;
-        this.SessionService = SessionService;
         this.uri = uri;
     }
     toString(){
