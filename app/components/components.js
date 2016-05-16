@@ -8,6 +8,7 @@ let restSvc = require('./rest/rest-service'),
     eventMediator = require('./event-mediator/event-mediator')
 ;
 
-module.exports = angular.module('him.components', [restSvc.name, navMenu.name, session.name, modal.name])
+module.exports = angular.module('him.components',
+    [restSvc.name, navMenu.name, session.name, modal.name])
     .service('EventMediator', eventMediator)
 ;
