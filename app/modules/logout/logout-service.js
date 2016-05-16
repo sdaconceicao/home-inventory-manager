@@ -15,10 +15,7 @@ class LogoutService {
         return this.RestService.call(
             {
                 method: 'POST',
-                url: this.uri.api + '/users/logout',
-                params: {
-                    'access_token': this.SessionService.getSession().sessionId
-                }
+                url: this.uri.api + '/users/logout'
             }
         );
     }
