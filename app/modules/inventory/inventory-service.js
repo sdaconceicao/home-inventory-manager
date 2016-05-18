@@ -19,6 +19,15 @@ class InventoryService{
         );
     }
 
+    getInventoriesForUser(id){
+        return this.RestService.call(
+            {
+                method: 'GET',
+                url: this.uri.api + `/inventories?userId=${id}`
+            }
+        )
+    }
+
     add(data){
         return this.RestService.call(
             {
@@ -28,6 +37,8 @@ class InventoryService{
             }
         );
     }
+
+
 }
 
 module.exports = InventoryService;

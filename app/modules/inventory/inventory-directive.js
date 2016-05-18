@@ -17,7 +17,9 @@ const inventory = ()=>{
         controller: InventoryCtrl,
         controllerAs: 'ctrl',
         bindToController: true,
-        scope: {}
+        scope: {
+            inventory: "="
+        }
     }
 };
 
