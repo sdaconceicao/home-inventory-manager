@@ -12,7 +12,7 @@ class DashboardCtrl{
     }
 
     init(){
-        this.InventoryService.getInventoriesForUser(this.SessionService.getSession().sessionId)
+        this.InventoryService.getInventoriesForUser()
             .then((response)=>{
                 console.log(this.toString() + " | init SUCCESS", response);
                 this.inventories = response;

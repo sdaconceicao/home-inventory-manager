@@ -22,6 +22,9 @@ class LogoutCtrl {
             })
             .catch((e)=>{
                 console.log(this.toString() + 'logout() error', e);
+                this.SessionService.resetSession();
+                this.$uibModalInstance.close();
+                this.state.go('home');
             });
     }
 

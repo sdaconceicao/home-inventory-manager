@@ -1,8 +1,9 @@
 'use strict';
 
 class InventoryService{
-    constructor(RestService, uri){
+    constructor(RestService, SessionService, uri){
         this.RestService = RestService;
+        this.SessionService = SessionService;
         this.uri = uri;
     }
 
@@ -23,7 +24,7 @@ class InventoryService{
         return this.RestService.call(
             {
                 method: 'GET',
-                url: this.uri.api + `/inventories?userId=${id}`
+                url: this.uri.api + `/users/${this.SessionService.getUser().id}/inventories`
             }
         )
     }
@@ -32,7 +33,7 @@ class InventoryService{
         return this.RestService.call(
             {
                 method: 'POST',
-                url: this.uri.api + '/inventories',
+                url: this.uri.api + `/users/${this.SessionService.getUser().id}/inventories`,
                 data: data
             }
         );
