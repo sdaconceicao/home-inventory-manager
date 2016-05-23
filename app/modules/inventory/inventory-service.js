@@ -24,7 +24,7 @@ class InventoryService{
         return this.RestService.call(
             {
                 method: 'GET',
-                url: this.uri.api + `/users/${this.SessionService.getUser().id}/inventories`
+                url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories`
             }
         )
     }

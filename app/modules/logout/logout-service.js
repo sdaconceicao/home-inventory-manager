@@ -14,7 +14,7 @@ class LogoutService {
         return this.RestService.call(
             {
                 method: 'POST',
-                url: this.uri.api + '/users/logout'
+                url: `${this.uri.api}/users/logout`
             }
         );
     }
