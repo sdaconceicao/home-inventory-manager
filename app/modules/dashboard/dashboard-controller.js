@@ -20,8 +20,9 @@ class DashboardCtrl{
     }
 
     addInventory(){
-
+        this.inventories.push({state: 'edit'});
     }
+
 }
 
 module.exports = DashboardCtrl;

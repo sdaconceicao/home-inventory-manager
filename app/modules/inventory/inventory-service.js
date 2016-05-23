@@ -29,14 +29,25 @@ class InventoryService{
         )
     }
 
-    add(data){
-        return this.RestService.call(
-            {
-                method: 'POST',
-                url: this.uri.api + `/users/${this.SessionService.getUser().id}/inventories`,
-                data: data
-            }
-        );
+    save(data){
+        if (data.id){
+            return this.RestService.call(
+                {
+                    method: 'PUT',
+                    url: this.uri.api + `/users/${this.SessionService.getUser().id}/inventories/${data.id}`,
+                    data: data
+                }
+            );
+        } else {
+            return this.RestService.call(
+                {
+                    method: 'POST',
+                    url: this.uri.api + `/users/${this.SessionService.getUser().id}/inventories`,
+                    data: data
+                }
+            );
+        }
+
     }
 
 
