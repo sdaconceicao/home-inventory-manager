@@ -1,14 +1,14 @@
 'use strict';
 
-class InventoryCtrl{
+class ItemCtrl{
 
     /* @ngInject */
-    constructor(InventoryService){
-        this.InventoryService = InventoryService;
+    constructor(ItemService){
+        this.ItemService = ItemService;
     }
 
     toString(){
-        return 'InventoryCtrl';
+        return 'ItemCtrl';
     }
 
     edit(){
@@ -20,7 +20,7 @@ class InventoryCtrl{
     }
 
     save(){
-        this.InventoryService.save(this.inventory)
+        this.ItemService.save(this.inventory)
             .then((result)=>{
                 this.inventory.state = 'view';
             })
@@ -33,18 +33,18 @@ class InventoryCtrl{
     }
 }
 
-const inventory = /* @ngInject */()=>{
+const item = /* @ngInject */()=>{
     return{
         restrict: 'E',
-        templateUrl: 'inventory/inventory.html',
-        controller: InventoryCtrl,
+        templateUrl: 'item/item.html',
+        controller: ItemCtrl,
         controllerAs: 'ctrl',
         bindToController: true,
         scope: {
-            inventory: "=",
+            item: "=",
             editable: "@"
         }
     }
 };
 
-module.exports = inventory;
+module.exports = item;

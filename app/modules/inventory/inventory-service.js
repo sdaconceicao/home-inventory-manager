@@ -26,7 +26,7 @@ class InventoryService{
                 method: 'GET',
                 url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories`
             }
-        )
+        );
     }
 
     save(data){

@@ -18,13 +18,12 @@ class SessionService{
         this.$sessionStorage.session.sessionId = response.id;
         this.setUser(response.user);
         this.EventMediator.emit('session-updated', this.$sessionStorage.session );
-
     }
 
     resetSession(){
         this.$sessionStorage.session = {
             loggedIn: false,
-            sessionId: null,
+            sessionId: null
         };
         this.EventMediator.emit('session-updated', this.$sessionStorage.session );
     }
