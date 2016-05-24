@@ -1,0 +1,10 @@
+<div class="inventory-view">
+    <ul>
+        <li ng-repeat="item in ctrl.inventory.items">
+            <item data="item" editable="true"></item>
+        </li>
+        <li>
+            <button ng-click="ctrl.addItem()"><span class="fa fa-plus">Add Item</span></button>
+        </li>
+    </ul>
+</div>

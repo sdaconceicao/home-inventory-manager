@@ -1,8 +1,8 @@
-<span>{{::ctrl.inventory.name}}</span>
-<div ng-if="ctrl.inventory.state==='view' && ctrl.editable">
-    <a ng-click="ctrl.edit()"></a>
+<a ui-sref="app.inventory({id: ctrl.data.id})">{{ctrl.data.name}}</a>
+<div ng-if="ctrl.state==='view' && ctrl.editable">
+    <a ng-click="ctrl.edit()"><span class="fa fa-edit"></span></a>
 </div>
-<div ng-if="ctrl.inventory.state==='edit'">
+<div ng-if="ctrl.state==='edit'">
     <button ng-click="ctrl.save()"><span class="fa fa-save">Save</span></button>
     <a ng-click="ctrl.cancel()">Cancel</a>
 </div>

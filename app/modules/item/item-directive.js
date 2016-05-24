@@ -12,17 +12,17 @@ class ItemCtrl{
     }
 
     edit(){
-        this.inventory.state = 'edit';
+        this.data.state = 'edit';
     }
 
     cancel(){
-        this.inventory.state = 'view';
+        this.data.state = 'view';
     }
 
     save(){
-        this.ItemService.save(this.inventory)
+        this.ItemService.save(this.data)
             .then((result)=>{
-                this.inventory.state = 'view';
+                this.data.state = 'view';
             })
             .catch((error)=>{
                 console.error(this.toString() + ' save() ERROR', error);
@@ -41,7 +41,7 @@ const item = /* @ngInject */()=>{
         controllerAs: 'ctrl',
         bindToController: true,
         scope: {
-            item: "=",
+            data: "=",
             editable: "@"
         }
     }

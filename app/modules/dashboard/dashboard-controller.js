@@ -20,7 +20,7 @@ class DashboardCtrl{
     }
 
     addInventory(){
-        this.inventories.push({state: 'edit'});
+        this.inventories.push({});
     }
 
 }

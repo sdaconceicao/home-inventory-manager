@@ -15,7 +15,7 @@ class InventoryService{
         return this.RestService.call(
             {
                 method: 'GET',
-                url: this.uri.api + `/inventories?id=${id}`
+                url: this.uri.api + `/inventories/${id}`
             }
         );
     }

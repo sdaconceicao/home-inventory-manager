@@ -5,6 +5,7 @@ class InventoryCtrl{
     /* @ngInject */
     constructor(InventoryService){
         this.InventoryService = InventoryService;
+        this.state = this.data.id ? 'view' : 'edit';
     }
 
     toString(){
@@ -12,17 +13,17 @@ class InventoryCtrl{
     }
 
     edit(){
-        this.inventory.state = 'edit';
+        this.state = 'edit';
     }
 
     cancel(){
-        this.inventory.state = 'view';
+        this.state = 'view';
     }
 
     save(){
-        this.InventoryService.save(this.inventory)
+        this.InventoryService.save(this.data)
             .then((result)=>{
-                this.inventory.state = 'view';
+                this.state = 'view';
             })
             .catch((error)=>{
                 console.error(this.toString() + ' save() ERROR', error);
@@ -41,7 +42,7 @@ const inventory = /* @ngInject */()=>{
         controllerAs: 'ctrl',
         bindToController: true,
         scope: {
-            inventory: "=",
+            data: "=",
             editable: "@"
         }
     }
