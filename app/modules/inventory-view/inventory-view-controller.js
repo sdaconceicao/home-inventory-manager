@@ -3,8 +3,9 @@
 class InventoryViewCtrl{
 
     /* @ngInject */
-    constructor(InventoryService, $stateParams){
+    constructor(InventoryService, ItemService, $stateParams){
         this.InventoryService = InventoryService;
+        this.ItemService = ItemService;
         this.$stateParams = $stateParams;
         this.init();
     }
@@ -18,11 +19,18 @@ class InventoryViewCtrl{
             .then((response)=>{
                 console.log(this.toString() + " | init SUCCESS", response);
                 this.inventory = response;
+                this.ItemService.getItemsForInventory(this.$stateParams.id).then((response)=>{
+                    this.items = response;
+                    if (!this.items){
+                        this.items = [];
+                    }
+                });
+
             })
     }
 
     addItem(){
-        this.inventory.items.push({state: 'edit'});
+        this.items.push({inventoryId: this.$stateParams.id});
     }
 
 

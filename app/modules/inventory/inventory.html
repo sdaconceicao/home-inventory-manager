@@ -1,9 +1,10 @@
-<a ui-sref="app.inventory({id: ctrl.data.id})">{{ctrl.data.name}}</a>
-<div ng-if="ctrl.state==='view' && ctrl.editable">
-    <a ng-click="ctrl.edit()"><span class="fa fa-edit"></span></a>
-</div>
-<div ng-if="ctrl.state==='edit'">
-    <button ng-click="ctrl.save()"><span class="fa fa-save">Save</span></button>
-    <a ng-click="ctrl.cancel()">Cancel</a>
-</div>
-
+<form editable-form name="editableForm" shown="ctrl.shown" onaftersave="ctrl.save()">
+    <a ui-sref="app.inventory({id: ctrl.data.id})" editable-text="ctrl.data.name">{{ctrl.data.name}}</a>
+    <div ng-if="!editableForm.$visible  && ctrl.editable">
+        <a ng-click="ctrl.edit()"><span class="fa fa-edit"></span></a>
+    </div>
+    <div ng-if="editableForm.$visible">
+        <button type="submit"><span class="fa fa-save">Save</span></button>
+        <a ng-click="ctrl.cancel(editableForm)">Cancel</a>
+    </div>
+</form>

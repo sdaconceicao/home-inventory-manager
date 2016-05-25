@@ -6,5 +6,5 @@ let dir = require('./item-directive'),
 
 module.exports = angular.module('him.item', [])
     .directive('item', dir)
-    .service('itemService', svc)
+    .service('ItemService', svc)
 ;

@@ -3,8 +3,9 @@
 class ItemService{
 
     /* @ngInject */
-    constructor(){
-
+    constructor(RestService, uri){
+        this.RestService = RestService;
+        this.uri = uri;
     }
 
     toString(){

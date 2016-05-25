@@ -5,6 +5,7 @@ class ItemCtrl{
     /* @ngInject */
     constructor(ItemService){
         this.ItemService = ItemService;
+        this.shown = this.data.id ? false : true;
     }
 
     toString(){
@@ -12,17 +13,17 @@ class ItemCtrl{
     }
 
     edit(){
-        this.data.state = 'edit';
+        this.form.$show();
     }
 
     cancel(){
-        this.data.state = 'view';
+        this.form.$hide();
     }
 
     save(){
         this.ItemService.save(this.data)
             .then((result)=>{
-                this.data.state = 'view';
+                this.form.$hide();
             })
             .catch((error)=>{
                 console.error(this.toString() + ' save() ERROR', error);
@@ -43,6 +44,9 @@ const item = /* @ngInject */()=>{
         scope: {
             data: "=",
             editable: "@"
+        },
+        link: function(scope, el, attr, ctrl) {
+            ctrl.form = scope.editableForm;
         }
     }
 };

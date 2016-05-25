@@ -19,7 +19,8 @@ var VendorConfig = function () {
                     newDirPath + vendorPath + 'angular-bootstrap/ui-bootstrap-tpls.min.js',
                     newDirPath + vendorPath + 'ngstorage/ngStorage.js',
                     newDirPath + vendorPath + 'satellizer/satellizer.min.js',
-                    newDirPath + vendorPath + 'lodash/lodash.min.js'
+                    newDirPath + vendorPath + 'lodash/lodash.min.js',
+                    newDirPath + vendorPath + 'angular-xeditable/dist/js/xeditable.min.js'
                 ],
                 devVendorList = [
                     newDirPath + vendorPath + 'jquery/dist/jquery.js',
@@ -32,7 +33,8 @@ var VendorConfig = function () {
                     newDirPath + vendorPath + 'angular-bootstrap/ui-bootstrap-tpls.js',
                     newDirPath + vendorPath + 'ngstorage/ngStorage.min.js',
                     newDirPath + vendorPath + 'satellizer/satellizer.js',
-                    newDirPath + vendorPath + 'lodash/lodash.js'
+                    newDirPath + vendorPath + 'lodash/lodash.js',
+                    newDirPath + vendorPath + 'angular-xeditable/dist/js/xeditable.min.js'
 
                 ];
             return target && target === 'local' ? minVendorList : devVendorList;
@@ -42,11 +44,13 @@ var VendorConfig = function () {
             var newDirPath = dirPath || '',
                 minVendorList = [
                     newDirPath + vendorPath + 'normalize-css/normalize.css',
-                    newDirPath + vendorPath + 'bootstrap/dist/css/bootstrap.min.css'
+                    newDirPath + vendorPath + 'bootstrap/dist/css/bootstrap.min.css',
+                    newDirPath + vendorPath + 'angular-xeditable/dist/css/xeditable.min.css'
                 ],
                 devVendorList = [
                     newDirPath + vendorPath + 'normalize-css/normalize.css',
-                    newDirPath + vendorPath + 'bootstrap/dist/css/bootstrap.css'
+                    newDirPath + vendorPath + 'bootstrap/dist/css/bootstrap.css',
+                    newDirPath + vendorPath + 'angular-xeditable/dist/css/xeditable.css'
                 ];
             return target && target === 'local' ? minVendorList : devVendorList;
         }

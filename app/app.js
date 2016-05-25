@@ -12,7 +12,7 @@ let oath = require('./config/oath'),
     inventory = require('./modules/inventory/inventory'),
     item = require('./modules/item/item'),
     inventoryView = require('./modules/inventory-view/inventory-view'),
-    dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage',
+    dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage', 'xeditable',
         'him.templates',
         components.name, home.name, login.name, logout.name, dashboard.name, inventory.name, item.name, inventoryView.name
     ]
@@ -41,7 +41,7 @@ angular.module('him', dependencies)
         $httpProvider.interceptors.push('SessionInjector');
     })
     .run(/* @ngInject */ ($templateCache, $rootScope, $state, $uibModal,
-                          SessionService,
+                          SessionService, editableOptions,
                           loginConfig)=>{
         $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
             let requireLogin = toState.data.requireLogin;
@@ -52,5 +52,6 @@ angular.module('him', dependencies)
                 $uibModal.open(loginConfig);
             }
         });
+        editableOptions.theme = 'bs3';
     })
 ;
