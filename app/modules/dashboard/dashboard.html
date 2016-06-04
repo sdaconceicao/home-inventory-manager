@@ -1,4 +1,4 @@
 <div class="dashboard">
-    <inventory ng-repeat="inventory in ctrl.inventories track by $index" data="inventory" editable="true"></inventory>
+    <inventory ng-repeat="inventory in ctrl.inventories track by $index" data="ctrl.inventories[$index]" ng-if="ctrl.inventories[$index]" editable="true"></inventory>
     <button ng-click="ctrl.addInventory()" ng-if="ctrl.getState() !== 'add'"><span class="fa fa-plus">Add Inventory</span></button>
 </div>
