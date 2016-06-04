@@ -1,8 +1,4 @@
-<ul>
-    <li ng-repeat="inventory in ctrl.inventories">
-        <inventory data="inventory" editable="true"></inventory>
-    </li>
-    <li>
-        <button ng-click="ctrl.addInventory()"><span class="fa fa-plus">Add Inventory</span></button>
-    </li>
-</ul>
+<div class="dashboard">
+    <inventory ng-repeat="inventory in ctrl.inventories track by $index" data="inventory" editable="true"></inventory>
+    <button ng-click="ctrl.addInventory()" ng-if="ctrl.getState() !== 'add'"><span class="fa fa-plus">Add Inventory</span></button>
+</div>

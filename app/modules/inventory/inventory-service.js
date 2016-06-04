@@ -39,6 +39,15 @@ class InventoryService{
         );
     }
 
+    delete(data){
+        return this.RestService.call(
+            {
+                method: 'DELETE',
+                url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories/${data.id}`
+            }
+        );
+    }
+
 
 }
 
