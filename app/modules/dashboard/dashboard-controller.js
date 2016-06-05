@@ -1,10 +1,11 @@
 'use strict';
 
 class DashboardCtrl{
-    constructor(InventoryService, SessionService, EventMediator){
+    constructor(InventoryService, SessionService, EventMediator, $scope){
         this.InventoryService = InventoryService;
         this.SessionService = SessionService;
         this.EventMediator = EventMediator;
+        this.$scope = $scope;
         this.init();
     }
 
@@ -17,7 +18,11 @@ class DashboardCtrl{
             .then((response)=>{
                 console.log(this.toString() + " | init SUCCESS", response);
                 this.inventories = response;
+                this.$scope.$watch('ctrl.inventories', ()=> {
+                    this.inventories = _.compact(this.inventories);
+                }, true);
             });
+
     }
 
     addInventory(){
@@ -25,7 +30,7 @@ class DashboardCtrl{
     }
 
     getState(){
-        return !this.inventories || this.inventories[this.inventories.length-1].name ? 'view' : 'add';
+        return !this.inventories || !this.inventories[this.inventories.length-1] || this.inventories[this.inventories.length-1].name ? 'view' : 'add';
     }
 
 }

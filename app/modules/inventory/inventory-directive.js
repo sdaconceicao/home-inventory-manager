@@ -59,7 +59,7 @@ class InventoryCtrl{
         this.InventoryService.delete(this.data)
             .then((result)=>{
                 this.data = null;
-                this.el.remove();
+                //this.el.remove();
             })
             .catch((error)=>{
                 console.error(this.toString() + ' save() ERROR', error);
