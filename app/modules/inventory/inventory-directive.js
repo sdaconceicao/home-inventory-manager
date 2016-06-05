@@ -79,7 +79,6 @@ const inventory = /* @ngInject */()=>{
         },
         link: function(scope, el, attr, ctrl) {
             ctrl.form = scope.editableForm;
-            ctrl.el = el;
         }
     }
 };

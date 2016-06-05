@@ -12,9 +12,11 @@ let oath = require('./config/oath'),
     inventory = require('./modules/inventory/inventory'),
     item = require('./modules/item/item'),
     inventoryView = require('./modules/inventory-view/inventory-view'),
+    category = require('./modules/category/category'),
     dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage', 'xeditable',
         'him.templates',
-        components.name, home.name, login.name, logout.name, dashboard.name, inventory.name, item.name, inventoryView.name
+        components.name, home.name, login.name, logout.name, dashboard.name, inventory.name, item.name,
+        inventoryView.name, category.name
     ]
 ;
 

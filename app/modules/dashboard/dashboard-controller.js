@@ -1,10 +1,9 @@
 'use strict';
 
 class DashboardCtrl{
-    constructor(InventoryService, SessionService, EventMediator, $scope){
+    constructor(InventoryService, SessionService, $scope){
         this.InventoryService = InventoryService;
         this.SessionService = SessionService;
-        this.EventMediator = EventMediator;
         this.$scope = $scope;
         this.init();
     }
@@ -14,7 +13,7 @@ class DashboardCtrl{
     }
 
     init(){
-        this.InventoryService.getInventoriesForUser()
+        this.InventoryService.getInventoriesForUser(this.SessionService.getUser().id)
             .then((response)=>{
                 console.log(this.toString() + " | init SUCCESS", response);
                 this.inventories = response;
