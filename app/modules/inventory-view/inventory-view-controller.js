@@ -3,10 +3,11 @@
 class InventoryViewCtrl{
 
     /* @ngInject */
-    constructor(InventoryService, ItemService, $stateParams){
+    constructor(InventoryService, ItemService, $stateParams, $scope){
         this.InventoryService = InventoryService;
         this.ItemService = ItemService;
         this.$stateParams = $stateParams;
+        this.$scope = $scope;
         this.init();
     }
 
@@ -24,6 +25,9 @@ class InventoryViewCtrl{
                     if (!this.items){
                         this.items = [];
                     }
+                    this.$scope.$watch('ctrl.items', ()=> {
+                        this.items = _.compact(this.items);
+                    }, true);
                 });
 
             })

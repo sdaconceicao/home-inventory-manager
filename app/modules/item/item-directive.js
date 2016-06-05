@@ -3,8 +3,10 @@
 class ItemCtrl{
 
     /* @ngInject */
-    constructor(ItemService){
+    constructor(ItemService, modalConfirmConfig, $uibModal){
         this.ItemService = ItemService;
+        this.modalConfirmConfig = modalConfirmConfig;
+        this.$uibModal = $uibModal;
         this.shown = this.data.id ? false : true;
     }
 
@@ -32,6 +34,33 @@ class ItemCtrl{
 
             });
     }
+
+    deleteConfirm(){
+        this.modalConfirmConfig.resolve = {
+            message: ()=> {
+                return "Are you sure you want to delete this item?";
+            }
+        };
+        let modal = this.$uibModal.open(this.modalConfirmConfig);
+        modal.result.then((result)=>{
+            if (result){
+                this.delete();
+            }
+
+        })
+
+    }
+
+    delete(){
+        this.ItemService.delete(this.data)
+            .then((result)=>{
+                this.data = null;
+            })
+            .catch((error)=>{
+                console.error(this.toString() + ' save() ERROR', error);
+            });
+    }
+
 }
 
 const item = /* @ngInject */()=>{

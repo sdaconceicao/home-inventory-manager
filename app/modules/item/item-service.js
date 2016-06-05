@@ -30,6 +30,16 @@ class ItemService{
             }
         );
     }
+
+    delete(data){
+        return this.RestService.call(
+            {
+                method: 'DELETE',
+                url: `${this.uri.api}/inventories/${data.inventoryId}/items/${data.id}`
+            }
+        );
+    }
+
 }
 
 module.exports = ItemService;
