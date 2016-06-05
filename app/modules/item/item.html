@@ -1,5 +1,5 @@
 <form editable-form name="editableForm" shown="ctrl.shown" onaftersave="ctrl.save()">
-    <a ui-sref="app.item({id: ctrl.data.id})" editable-text="ctrl.data.name">{{ctrl.data.name}}</a>
+    <span editable-text="ctrl.data.name">{{ctrl.data.name}}</span>
     <div ng-if="!editableForm.$visible  && ctrl.editable">
         <a ng-click="ctrl.edit()"><span class="fa fa-edit"></span></a>
         <a ng-click="ctrl.deleteConfirm()"><span class="fa fa-trash"></span></a>
