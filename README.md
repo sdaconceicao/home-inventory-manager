@@ -1,18 +1,20 @@
 # README #
 
-Home Inventory Manager is a web application I built in anticipation of moving to a new house. No inventory managers did what I needed so I built my own. Built with CodeIgniter.
+Home Inventory Manager is a web application I built in anticipation of moving to a new house. No inventory managers did what I needed so I built my own. Built with Angular.
 
 ### Details ###
 
-* Uses CodeIgniter
+* Uses Angular
 * Version 0.1
 
 
-### How do I get set up? ###
+### Setup ###
 
-* Run create.sql
-* Move files into apache dir 
+1. Run npm install
+2. Run bower install
 
+### Startup ###
+1. Run npm start
 
 ### Questions? ###
 

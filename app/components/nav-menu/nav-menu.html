@@ -1,0 +1,12 @@
+<nav id="nav-menu" role="navigation">
+    <ul>
+        <li>
+            <a ui-sref="home" ng-if="!ctrl.loggedIn">Home Inventory Manager</a>
+            <a ui-sref="app.dashboard" ng-if="ctrl.loggedIn">Home Inventory Manager</a>
+        </li>
+        <li>
+            <a ng-click="ctrl.loginModal()" ng-if="!ctrl.loggedIn"><span class="fa fa-key"></span></a>
+            <a ng-click="ctrl.logoutModal()" ng-if="ctrl.loggedIn"><span class="fa fa-close"></span></a>
+        </li>
+    </ul>
+</nav>
