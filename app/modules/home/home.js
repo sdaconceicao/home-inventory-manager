@@ -8,7 +8,7 @@ module.exports = angular.module('him.home', [])
                 url: '/home',
                 views: {
                     'content@': {
-                        templateUrl: 'home/home.html'
+                        template: require('./home.html')
                     }
                 },
                 data: {

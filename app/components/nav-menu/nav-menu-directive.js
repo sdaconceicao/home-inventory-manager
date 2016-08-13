@@ -37,7 +37,7 @@ class NavMenuCtrl{
 
 const navMenu = /* @ngInject */() => {
     return {
-        templateUrl: 'nav-menu/nav-menu.html',
+        template: require('./nav-menu.html'),
         restrict: 'E',
         replace: true,
         controller: NavMenuCtrl,

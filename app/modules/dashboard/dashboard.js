@@ -11,7 +11,7 @@ module.exports = angular.module('him.dashboard', [])
                 url: '/dashboard',
                 views: {
                     'content@': {
-                        templateUrl: 'dashboard/dashboard.html',
+                        template: require('./dashboard.html'),
                         controller: 'DashboardCtrl as ctrl'
                     }
                 },

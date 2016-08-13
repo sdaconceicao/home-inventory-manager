@@ -8,7 +8,7 @@ let ctrl = require('./logout-controller'),
 module.exports = angular.module('him.logout', [])
     .constant('logoutConfig', {
         animation: true,
-        templateUrl: 'logout/logout.html',
+        template: require('./logout.html'),
         controller: 'LogoutCtrl',
         controllerAs: 'ctrl',
         size: 'sm'

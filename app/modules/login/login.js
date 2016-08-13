@@ -8,7 +8,7 @@ let ctrl = require('./login-controller'),
 module.exports = angular.module('him.login', [])
     .constant('loginConfig', {
         animation: true,
-        templateUrl: 'login/login.html',
+        template: require('./login.html'),
         controller: 'LoginCtrl',
         controllerAs: 'ctrl',
         size: 'sm'

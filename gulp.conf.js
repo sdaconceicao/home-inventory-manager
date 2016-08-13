@@ -2,7 +2,6 @@
 //Plugins
 var gulp = require('gulp'),
     argv = require("yargs").argv,
-    ngTemplates = require('gulp-ng-templates'),
     karmaServer = require('karma').Server,
     webpack = require('webpack'),
     gutil = require("gulp-util"),
@@ -34,7 +33,6 @@ var APP_DIR = './app',
     SCSS_MAIN_FILE = [APP_DIR + '/styles/main.scss'],
     SCSS_WATCH_FILES = [SCSS_MAIN_FILE, APP_DIR + '/components/**/*.scss', APP_DIR + '/modules/**/*.scss'],
     IMG_FILES = [APP_DIR + '/styles/images/*'],
-    TEMPLATE_WATCH_FILES = [APP_DIR + '/components/**/*.html', APP_DIR + '/modules/**/*.html'],
     WEBPACK_CONF = require('./webpack.conf.js'),
     JS_MAIN_FILE = './app/app.js',
     JS_OUTPUT_FILE = 'scripts.min.js',
@@ -77,20 +75,6 @@ gulp.task('vendor', function () {
     console.log("Building vendor js");
     gulp.src(VENDOR_BUNDLER_FILES)
         .pipe(concat(VENDOR_OUTPUT_FILE))
-        .pipe(gulp.dest(DIST_DIR));
-});
-
-gulp.task('templates', function () {
-    console.log('Building $templateCache');
-    return gulp.src(TEMPLATE_WATCH_FILES)
-        .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(ngTemplates({
-            filename: 'templates.js',
-            module: 'him.templates',
-            path: function (path, base) {
-                return path.replace(base, '').replace('/templates', '');
-            }
-        }))
         .pipe(gulp.dest(DIST_DIR));
 });
 
@@ -176,7 +160,6 @@ gulp.task('browser-sync', function () {
         }
     });
 
-    gulp.watch(TEMPLATE_WATCH_FILES, ['templates']);
     gulp.watch(SCSS_WATCH_FILES, ['sass']);
     gulp.watch(APP_DIR + '/index.html', ['index']);
     gulp.watch(FONT_FILES, ['fonts']);
@@ -192,5 +175,5 @@ gulp.task('tdd', function (done) {
 });
 
 gulp.task('default', function (done) {
-    runSequence('constants', 'index', 'img', 'templates', 'sass', 'fonts', 'vendor', 'webpack', 'browser-sync', done);
+    runSequence('constants', 'index', 'img', 'sass', 'fonts', 'vendor', 'webpack', 'browser-sync', done);
 });

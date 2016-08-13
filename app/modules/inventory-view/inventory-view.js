@@ -10,7 +10,7 @@ module.exports = angular.module('him.inventoryView', [])
                 url: '/inventory/:id',
                 views: {
                     'content@': {
-                        templateUrl: 'inventory-view/inventory-view.html',
+                        template: require('./inventory-view.html'),
                         controller: 'InventoryViewCtrl as ctrl'
                     }
                 },

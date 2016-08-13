@@ -17,7 +17,7 @@ class CategoryCtrl{
 const inventory = /* @ngInject */()=>{
     return{
         restrict: 'E',
-        templateUrl: 'category/category.html',
+        template: require('./category.html'),
         controller: CategoryCtrl,
         controllerAs: 'ctrl',
         bindToController: true,
