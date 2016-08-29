@@ -1,0 +1,27 @@
+.modal-content{
+    border-radius: 0;
+    .modal-wrapper {
+        > .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: $danger;
+            z-index:2;
+            border:none;
+            &:before{
+                color: $danger-text;
+            }
+        }
+        .modal-body {
+            > h1 {
+                font-size: 2rem;
+                margin-top:0px;
+            }
+        }
+        .modal-footer{
+            padding:0;
+            border-top:0;
+            margin-top:10px;
+        }
+    }
+}

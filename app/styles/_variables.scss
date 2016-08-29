@@ -7,7 +7,7 @@ $success-text: darken($success, 30%);
 $warning: yellow;
 $warning-text: darken($warning, 30%);
 $danger: red;
-$danger-text: darken($danger, 30%);
+$danger-text: white;
 
 @mixin tintedBg($url, $color, $transparency){
     background: linear-gradient(

@@ -15,7 +15,7 @@ class ModalCtrl{
 
 const modal = /* @ngInject */() =>{
     return {
-        templateUrl: 'modal/modal.html',
+        template: require('./modal.html'),
         restrict: 'E',
         replace: true,
         transclude: true,
