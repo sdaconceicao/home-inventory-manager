@@ -1,7 +1,4 @@
-/* global module, angular*/
-'use strict';
-
-class RestService{
+class HttpService{
     /* @ngInject */
     constructor($http, $q){
         this.http = $http;
@@ -31,6 +28,6 @@ class RestService{
     }
 }
 
-module.exports = angular.module('him.components.rest', [])
-    .service('RestService', RestService)
+module.exports = angular.module('him.components.http', [])
+    .service('HttpService', HttpService)
 ;

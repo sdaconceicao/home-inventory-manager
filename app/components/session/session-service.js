@@ -1,5 +1,3 @@
-'use strict';
-
 class SessionService{
     constructor($sessionStorage, EventMediator){
         this.$sessionStorage = $sessionStorage;

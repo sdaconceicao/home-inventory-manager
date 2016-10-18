@@ -1,6 +1,3 @@
-/* global module, angular */
-'use strict';
-
 class LogoutCtrl {
     /* @ngInject */
     constructor($state, $uibModalInstance, SessionService, LogoutService){

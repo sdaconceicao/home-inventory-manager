@@ -1,7 +1,4 @@
-'use strict';
-
-let ctrl = require('./inventory-view-controller')
-    ;
+let ctrl = require('./inventory-view-controller');
 
 module.exports = angular.module('him.inventoryView', [])
     .config(['$stateProvider', function ($stateProvider) {

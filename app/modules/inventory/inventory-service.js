@@ -1,8 +1,7 @@
-'use strict';
-
 class InventoryService{
-    constructor(RestService, SessionService, uri){
-        this.RestService = RestService;
+    /* @ngInject */
+    constructor(HttpService, SessionService, uri){
+        this.HttpService = HttpService;
         this.SessionService = SessionService;
         this.uri = uri;
     }
@@ -12,7 +11,7 @@ class InventoryService{
     }
 
     get(id){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'GET',
                 url: this.uri.api + `/inventories/${id}`
@@ -21,7 +20,7 @@ class InventoryService{
     }
 
     getInventoriesForUser(id){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'GET',
                 url: `${this.uri.api}/users/${id}/inventories`
@@ -30,7 +29,7 @@ class InventoryService{
     }
 
     save(data){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: data.id ? 'PUT' : 'POST',
                 url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories/${data.id ? data.id : ''}`,
@@ -40,7 +39,7 @@ class InventoryService{
     }
 
     delete(data){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'DELETE',
                 url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories/${data.id}`

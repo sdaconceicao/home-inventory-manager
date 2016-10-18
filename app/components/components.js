@@ -1,7 +1,7 @@
 /* global angular, module, require */
 'use strict';
 
-let restSvc = require('./rest/rest-service'),
+let httpSvc = require('./http/http-service'),
     navMenu = require('./nav-menu/nav-menu-directive'),
     session = require('./session/session'),
     modal = require('./modal/modal-directive'),
@@ -10,6 +10,6 @@ let restSvc = require('./rest/rest-service'),
 ;
 
 module.exports = angular.module('him.components',
-    [restSvc.name, navMenu.name, session.name, modal.name, modalConfirm.name])
+    [httpSvc.name, navMenu.name, session.name, modal.name, modalConfirm.name])
     .service('EventMediator', eventMediator)
 ;

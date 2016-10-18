@@ -1,10 +1,8 @@
-'use strict';
-
 class ItemService{
 
     /* @ngInject */
-    constructor(RestService, uri){
-        this.RestService = RestService;
+    constructor(HttpService, uri){
+        this.HttpService = HttpService;
         this.uri = uri;
     }
 
@@ -13,7 +11,7 @@ class ItemService{
     }
 
     getItemsForInventory(id){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'GET',
                 url: `${this.uri.api}/inventories/${id}/items`
@@ -22,7 +20,7 @@ class ItemService{
     }
 
     save(data){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: data.id ? 'PUT' : 'POST',
                 url: `${this.uri.api}/inventories/${data.inventoryId}/items/${data.id ? data.id : ''}`,
@@ -32,7 +30,7 @@ class ItemService{
     }
 
     delete(data){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'DELETE',
                 url: `${this.uri.api}/inventories/${data.inventoryId}/items/${data.id}`

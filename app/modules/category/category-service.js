@@ -1,8 +1,8 @@
 'use strict';
 
 class CategoryService{
-    constructor(RestService, uri){
-        this.RestService = RestService;
+    constructor(HttpService, uri){
+        this.HttpService = HttpService;
         this.uri = uri;
     }
 
@@ -11,7 +11,7 @@ class CategoryService{
     }
 
     getCategoriesForUser(id){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'GET',
                 url: `${this.uri.api}/users/${id}/categories`

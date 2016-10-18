@@ -1,6 +1,6 @@
-'use strict';
-
 class DashboardCtrl{
+
+    /* @ngInject */
     constructor(InventoryService, SessionService, $scope){
         this.InventoryService = InventoryService;
         this.SessionService = SessionService;

@@ -1,6 +1,3 @@
-/* global angular, module, require */
-'use strict';
-
 module.exports = angular.module('him.home', [])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider

@@ -1,9 +1,5 @@
-/* global angular, module, require */
-'use strict';
-
 let ctrl = require('./login-controller'),
-    svc = require('./login-service')
-;
+    svc = require('./login-service');
 
 module.exports = angular.module('him.login', [])
     .constant('loginConfig', {

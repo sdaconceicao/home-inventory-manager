@@ -1,6 +1,3 @@
-/* $, global angular, module, require */
-'use strict';
-
 class EventMediator{
 
     constructor($rootScope){

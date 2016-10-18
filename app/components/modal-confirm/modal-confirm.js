@@ -1,8 +1,4 @@
-/* global angular, module, require */
-'use strict';
-
-let ctrl = require('./modal-confirm-controller')
-    ;
+let ctrl = require('./modal-confirm-controller');
 
 module.exports = angular.module('him.modalConfirm', [])
     .constant('modalConfirmConfig', {

@@ -1,4 +1,3 @@
-'use strict';
 var SessionInjector = (SessionService)=> {
     return {
         request: function(config) {
