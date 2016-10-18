@@ -1,9 +1,8 @@
 class InventoryService{
     /* @ngInject */
-    constructor(HttpService, SessionService, uri){
+    constructor(HttpService, SessionService){
         this.HttpService = HttpService;
         this.SessionService = SessionService;
-        this.uri = uri;
     }
 
     toString(){
@@ -14,7 +13,7 @@ class InventoryService{
         return this.HttpService.call(
             {
                 method: 'GET',
-                url: this.uri.api + `/inventories/${id}`
+                url: `/inventories/${id}`
             }
         );
     }
@@ -23,7 +22,7 @@ class InventoryService{
         return this.HttpService.call(
             {
                 method: 'GET',
-                url: `${this.uri.api}/users/${id}/inventories`
+                url: `/users/${id}/inventories`
             }
         );
     }
@@ -32,7 +31,7 @@ class InventoryService{
         return this.HttpService.call(
             {
                 method: data.id ? 'PUT' : 'POST',
-                url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories/${data.id ? data.id : ''}`,
+                url: `/users/${this.SessionService.getUser().id}/inventories/${data.id ? data.id : ''}`,
                 data: data
             }
         );
@@ -42,7 +41,7 @@ class InventoryService{
         return this.HttpService.call(
             {
                 method: 'DELETE',
-                url: `${this.uri.api}/users/${this.SessionService.getUser().id}/inventories/${data.id}`
+                url: `/users/${this.SessionService.getUser().id}/inventories/${data.id}`
             }
         );
     }

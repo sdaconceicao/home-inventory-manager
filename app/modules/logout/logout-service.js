@@ -1,7 +1,6 @@
 class LogoutService {
-    constructor(HttpService, uri){
+    constructor(HttpService){
         this.HttpService = HttpService;
-        this.uri = uri;
     }
     toString(){
         return 'LogoutService';
@@ -10,7 +9,7 @@ class LogoutService {
         return this.HttpService.call(
             {
                 method: 'POST',
-                url: `${this.uri.api}/users/logout`
+                url: `users/logout`
             }
         );
     }

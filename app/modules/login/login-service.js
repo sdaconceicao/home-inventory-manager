@@ -3,9 +3,8 @@
 
 
 class LoginService {
-    constructor(HttpService, uri){
+    constructor(HttpService){
         this.HttpService = HttpService;
-        this.uri = uri;
     }
     toString(){
         return 'LoginService';
@@ -14,7 +13,7 @@ class LoginService {
         return this.HttpService.call(
             {
                 method: 'POST',
-                url:  `${this.uri.api}/users/login?include=user`,
+                url:  `/users/login?include=user`,
                 data: credentials
             }
         );
@@ -23,7 +22,7 @@ class LoginService {
         return this.HttpService.call(
             {
                 method: 'POST',
-                url: `${this.uri.api}/users`,
+                url: `/users`,
                 data: params
             }
         );

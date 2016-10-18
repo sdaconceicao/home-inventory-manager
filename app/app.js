@@ -44,7 +44,7 @@ angular.module('him', dependencies)
     })
     .run(/* @ngInject */ ($templateCache, $rootScope, $state, $uibModal,
                           SessionService, editableOptions,
-                          loginConfig)=>{
+                          loginConfig, HttpService, uri)=>{
         $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
             let requireLogin = toState.data.requireLogin;
 
@@ -54,6 +54,8 @@ angular.module('him', dependencies)
                 $uibModal.open(loginConfig);
             }
         });
+        HttpService.configure(uri);
         editableOptions.theme = 'bs3';
+
     })
 ;

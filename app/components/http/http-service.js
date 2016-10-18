@@ -4,15 +4,21 @@ class HttpService{
         this.http = $http;
         this.q = $q;
     }
+
+    configure(base){
+        this.base = base.api;
+    }
+
     call(config){
-        let deferred = this.q.defer(), svc = this;
+        let deferred = this.q.defer();
+        config.url = this.base + config.url;
 
         this.http(config)
-            .then( function(response) {
-                svc.successHandler(deferred, config, response)
+            .then( (response)=> {
+                this.successHandler(deferred, config, response)
             })
-            .catch( function(response) {
-                svc.errorHandler(deferred, config, response)
+            .catch( (response)=> {
+                this.errorHandler(deferred, config, response)
             });
 
         return deferred.promise;

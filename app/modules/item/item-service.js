@@ -1,9 +1,8 @@
 class ItemService{
 
     /* @ngInject */
-    constructor(HttpService, uri){
+    constructor(HttpService){
         this.HttpService = HttpService;
-        this.uri = uri;
     }
 
     toString(){
@@ -14,7 +13,7 @@ class ItemService{
         return this.HttpService.call(
             {
                 method: 'GET',
-                url: `${this.uri.api}/inventories/${id}/items`
+                url: `/inventories/${id}/items`
             }
         );
     }
@@ -23,7 +22,7 @@ class ItemService{
         return this.HttpService.call(
             {
                 method: data.id ? 'PUT' : 'POST',
-                url: `${this.uri.api}/inventories/${data.inventoryId}/items/${data.id ? data.id : ''}`,
+                url: `/inventories/${data.inventoryId}/items/${data.id ? data.id : ''}`,
                 data: data
             }
         );
@@ -33,7 +32,7 @@ class ItemService{
         return this.HttpService.call(
             {
                 method: 'DELETE',
-                url: `${this.uri.api}/inventories/${data.inventoryId}/items/${data.id}`
+                url: `/inventories/${data.inventoryId}/items/${data.id}`
             }
         );
     }

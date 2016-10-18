@@ -1,9 +1,8 @@
 'use strict';
 
 class CategoryService{
-    constructor(HttpService, uri){
+    constructor(HttpService){
         this.HttpService = HttpService;
-        this.uri = uri;
     }
 
     toString(){
@@ -14,7 +13,7 @@ class CategoryService{
         return this.HttpService.call(
             {
                 method: 'GET',
-                url: `${this.uri.api}/users/${id}/categories`
+                url: `/users/${id}/categories`
             }
         );
     }
