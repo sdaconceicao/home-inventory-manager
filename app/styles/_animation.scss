@@ -1,11 +1,11 @@
-.ng-leave, .ng-hide-add {
+.ng-leave.fadeOut, .ng-hide-add.fadeOut {
     -webkit-animation:0.5s fadeOut;
     -moz-animation:0.5s fadeOut;
     -o-animation:0.5s fadeOut;
     animation:0.5s fadeOut;
 }
 
-.ng-enter, .ng-hide-remove{
+.ng-enter.fadeIn, .ng-hide-remove.fadeIn{
     -webkit-animation:0.5s fadeIn;
     -moz-animation:0.5s fadeIn;
     -o-animation:0.5s fadeIn;
