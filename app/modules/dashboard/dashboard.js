@@ -1,8 +1,4 @@
-/* global angular, module, require */
-'use strict';
-
-let ctrl = require('./dashboard-controller')
-    ;
+let ctrl = require('./dashboard-controller');
 
 module.exports = angular.module('him.dashboard', [])
     .config(['$stateProvider', function ($stateProvider) {

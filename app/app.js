@@ -13,10 +13,11 @@ let oath = require('./config/oath'),
     item = require('./modules/item/item'),
     inventoryView = require('./modules/inventory-view/inventory-view'),
     category = require('./modules/category/category'),
+    inventoryNav = require('./modules/inventory-nav/inventory-nav'),
     dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage', 'xeditable',
         'him.templates',
         components.name, home.name, login.name, logout.name, dashboard.name, inventory.name, item.name,
-        inventoryView.name, category.name
+        inventoryView.name, category.name, inventoryNav.name
     ]
 ;
 
@@ -38,6 +39,18 @@ angular.module('him', dependencies)
             abstract: true,
             data: {
                 requireLogin: true
+            },
+            views: {
+                'inventoryNav@': {
+                    template: require('./modules/inventory-nav/inventory-nav.html'),
+                    controller: 'InventoryNavCtrl as ctrl',
+                    resolve: {
+                        /* @ngInject */
+                        inventories(InventoryService, SessionService) {
+                            return InventoryService.getInventoriesForUser(SessionService.getUser().id);
+                        }
+                    }
+                }
             }
         });
         $httpProvider.interceptors.push('SessionInjector');

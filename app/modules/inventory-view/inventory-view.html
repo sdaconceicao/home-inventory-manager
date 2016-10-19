@@ -1,6 +1,6 @@
 <div class="inventory-view">
     <h2>{{::ctrl.inventory.name}}</h2>
-    <ul>
+    <ul class="inventory-view-list">
         <li ng-repeat="item in ctrl.items track by $index">
             <item data="ctrl.items[$index]" editable="true"></item>
         </li>
