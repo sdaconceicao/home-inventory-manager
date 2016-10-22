@@ -10,7 +10,6 @@ class InventoryListCtrl{
     }
 
     $onInit(){
-        console.log('init', this.inventories);
         this.$scope.$watch('$ctrl.inventories', ()=> {
             this.inventories = _.compact(this.inventories);
         }, true);

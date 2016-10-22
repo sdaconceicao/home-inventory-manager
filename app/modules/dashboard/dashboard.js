@@ -1,4 +1,4 @@
-let ctrl = require('./dashboard-controller');
+let comp = require('./dashboard-component');
 
 module.exports = angular.module('him.dashboard', [])
     .config(['$stateProvider', function ($stateProvider) {
@@ -7,12 +7,10 @@ module.exports = angular.module('him.dashboard', [])
                 url: '/dashboard',
                 views: {
                     'content@': {
-                        template: require('./dashboard.html'),
-                        controller: 'DashboardCtrl as ctrl'
+                        component: 'dashboard'
                     }
-                },
-                data: {}
+                }
             })
     }])
-    .controller('DashboardCtrl', ctrl)
+    .component('dashboard', comp)
 ;

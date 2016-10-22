@@ -32,17 +32,13 @@ class NavMenuCtrl{
 
 }
 
-const navMenu = /* @ngInject */() => {
-    return {
+const navMenuComponentConfig = /* @ngInject */{
         template: require('./nav-menu.html'),
-        restrict: 'E',
         replace: true,
-        controller: NavMenuCtrl,
-        controllerAs: 'ctrl',
-        bindToController: true
-    };
+        controller: NavMenuCtrl
+
 };
 
 module.exports = angular.module('him.navMenu', [])
-    .directive('navMenu', navMenu)
+    .component('navMenu', navMenuComponentConfig)
 ;
