@@ -1,5 +1,8 @@
 .content-main{
-    width: calc(100% - 210px);
-    display: inline-block;
+    width: calc(100% - 204px);
+    flex: 2;
     vertical-align: top;
+    padding: 20px;
+    border-right: 1px solid black;
+    min-height: 100vh;
 }

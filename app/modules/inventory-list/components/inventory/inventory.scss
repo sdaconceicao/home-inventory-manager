@@ -1,0 +1,10 @@
+.inventory{
+    position: relative;
+    .inventory-name{
+        color: white;
+        display: inline-block;
+        width: calc(100% - 30px);
+
+    }
+
+}

@@ -2,4 +2,18 @@
 
 .inventory-list{
 
+    list-style: none;
+    margin: 0;
+    padding:0;
+    .inventory-item{
+        width: 100%;
+        font-size: 2rem;
+        padding:0 0 0 20px;
+        &:hover, &.active{
+            background-color: white;
+            a {
+                color: darkblue;
+            }
+        }
+    }
 }

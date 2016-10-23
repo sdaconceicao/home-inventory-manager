@@ -11,3 +11,9 @@
 "../modules/inventory-list/inventory-list",
 "../modules/inventory-view/inventory-view"
 ;
+
+#main{
+    display: flex;
+    overflow: hidden;
+    padding: 0;
+}
