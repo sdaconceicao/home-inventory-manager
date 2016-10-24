@@ -1,5 +1,4 @@
 <form class="item" editable-form name="editableForm" shown="ctrl.shown" onaftersave="ctrl.save()">
-    <img ng-src="ctrl.data.image"/>
     <span editable-text="ctrl.data.name">{{ctrl.data.name}}</span>
     <div ng-if="!editableForm.$visible  && ctrl.editable">
         <a ng-click="ctrl.edit()"><span class="fa fa-edit"></span></a>

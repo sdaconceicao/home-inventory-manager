@@ -5,13 +5,14 @@
     list-style: none;
     margin: 0;
     padding:0;
-    .inventory-item{
+    .inventory-item {
         width: 100%;
-        padding:0 0 0 10px;
-        &:hover, &.active{
+        padding: 0 0 0 10px;
+        &:hover, &.active {
             background-color: white;
             a {
-                color: darkblue;
+                color: $secondary;
+                text-decoration: none;
             }
         }
     }

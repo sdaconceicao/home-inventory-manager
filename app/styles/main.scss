@@ -24,5 +24,7 @@ h1, h2, h3, h4, h5, h6{
     display: flex;
     overflow: hidden;
     padding: 0;
+    border: 1px solid $primary;
+    background-color: lighten($primary, 50%);
 }
 

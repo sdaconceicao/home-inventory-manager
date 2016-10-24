@@ -3,6 +3,7 @@
     max-width: 200px;
     border: 1px solid #888;
     background-color: #0b97c4;
+    position: relative;
     &:empty{
         display:none;
         & + .content-main{
@@ -25,8 +26,9 @@
     }
     .list-add{
         background-color: white;
-        width: 100%;
-        display: block;
-        font-size: 2rem;
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+        top: 5px;
     }
 }

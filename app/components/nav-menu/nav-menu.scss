@@ -1,34 +1,44 @@
 #nav-menu{
-    width:100%; height:40px;
+    width:100%; height:65px;
+    background-color: $primary;
     > ul{
-        width:100%;
         z-index:10;
-        background-color: #333;
+        position: relative;
         color: white;
         padding-left: 0px;
         text-align: right;
-        border-bottom: 1px solid black;
         li {
             padding: 10px;
             display: inline-block;
+            height: 55px;
             a {
-                color:white;
+                color:$primary-text;
                 text-decoration: none;
                 font-weight:200;
+                font-size: 2rem;
                 &:hover, &:active, &.active{
-                    color:$primary;
-                    border-bottom: 2px solid $primary;
+                    color:$secondary;
                 }
             }
 
-            &:first-child{
+            &.logo-options{
                 position:absolute;
                 left: 0px;
                 a {
                     font-weight:600;
-
+                    .logo{
+                        background-image: url('/styles/images/logo.svg');
+                        width: 126px;
+                        height: 44px;
+                        display: inline-block;
+                    }
                 }
             }
+            &.menu-options{
+                margin-top: 10px;
+                margin-right:-10px;
+            }
+
         }
     }
 }
