@@ -7,6 +7,12 @@
         color: white;
         padding-left: 0px;
         text-align: right;
+        &.fixed{
+            position:fixed;
+            top: 0; left: 0;
+            width: 100%;
+            background-color: $primary;
+        }
         li {
             padding: 10px;
             display: inline-block;
@@ -16,6 +22,7 @@
                 text-decoration: none;
                 font-weight:200;
                 font-size: 2rem;
+                cursor: pointer;
                 &:hover, &:active, &.active{
                     color:$secondary;
                 }
