@@ -1,20 +1,15 @@
-/* global module, angular */
-'use strict';
-
-
 class LogoutService {
-    constructor(RestService, uri){
-        this.RestService = RestService;
-        this.uri = uri;
+    constructor(HttpService){
+        this.HttpService = HttpService;
     }
     toString(){
         return 'LogoutService';
     }
     logout(){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'POST',
-                url: `${this.uri.api}/users/logout`
+                url: `users/logout`
             }
         );
     }

@@ -1,13 +1,13 @@
-$primary: #12193e;
+$primary: #333;
 $primary-text: white;
-$secondary: #304a97;
-$secondary-text: yellow;
+$secondary: #0b97c4;
+$secondary-text: white;
 $success: green;
 $success-text: darken($success, 30%);
 $warning: yellow;
 $warning-text: darken($warning, 30%);
 $danger: red;
-$danger-text: darken($danger, 30%);
+$danger-text: white;
 
 @mixin tintedBg($url, $color, $transparency){
     background: linear-gradient(

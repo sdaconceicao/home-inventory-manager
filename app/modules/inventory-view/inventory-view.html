@@ -1,11 +1,10 @@
 <div class="inventory-view">
     <h2>{{::ctrl.inventory.name}}</h2>
-    <ul>
+    <button ng-click="ctrl.addItem()"><span class="fa fa-plus"></span></button>
+
+    <ul class="inventory-view-list">
         <li ng-repeat="item in ctrl.items track by $index">
             <item data="ctrl.items[$index]" editable="true"></item>
-        </li>
-        <li>
-            <button ng-click="ctrl.addItem()"><span class="fa fa-plus">Add Item</span></button>
         </li>
     </ul>
 </div>

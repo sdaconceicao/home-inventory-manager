@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>Home Inventory Manager</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,100italic,700italic,700' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="him">
-<header>
-    <nav-menu role="navigation"></nav-menu>
-</header>
-<div id="main" ui-view="content">
-</div>
-<footer class="row">
-    <div class="large-12 columns">
-        <hr>
-        <p>© Copyright 2015.</p>
+    <header>
+        <nav-menu role="navigation"></nav-menu>
+    </header>
+    <div id="main" class="container">
+        <nav ui-view="contentNav" class="content-nav"></nav>
+        <div ui-view="content" container-fade-in class="content-main"></div>
     </div>
-</footer>
-<script src="vendor.min.js"></script>
-<script src="scripts.min.js"></script>
-
+    <footer class="container">
+        <site-footer></site-footer>
+    </footer>
+    <script src="/vendor.min.js"></script>
+    <script src="/scripts.min.js"></script>
 </body>
 </html>

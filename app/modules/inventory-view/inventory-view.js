@@ -1,16 +1,15 @@
-'use strict';
+let ctrl = require('./inventory-view-controller'),
+    item = require('./components/item/item'),
+    category = require('./components/category/category');
 
-let ctrl = require('./inventory-view-controller')
-    ;
-
-module.exports = angular.module('him.inventoryView', [])
-    .config(['$stateProvider', function ($stateProvider) {
+module.exports = angular.module('him.inventoryView', [item.name, category.name])
+    .config(['$stateProvider', ($stateProvider) =>{
         $stateProvider
             .state('app.inventory', {
                 url: '/inventory/:id',
                 views: {
                     'content@': {
-                        templateUrl: 'inventory-view/inventory-view.html',
+                        template: require('./inventory-view.html'),
                         controller: 'InventoryViewCtrl as ctrl'
                     }
                 },

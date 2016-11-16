@@ -1,5 +1,3 @@
-'use strict';
-
 class ItemCtrl{
 
     /* @ngInject */
@@ -66,7 +64,7 @@ class ItemCtrl{
 const item = /* @ngInject */()=>{
     return{
         restrict: 'E',
-        templateUrl: 'item/item.html',
+        template: require('./item.html'),
         controller: ItemCtrl,
         controllerAs: 'ctrl',
         bindToController: true,

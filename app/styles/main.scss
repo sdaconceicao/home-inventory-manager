@@ -3,9 +3,31 @@
 "./variables",
 "./buttons",
 "./animation",
+"./navigation",
+"./content",
 "../components/components",
 "../modules/dashboard/dashboard",
 "../modules/login/login",
-"../modules/inventory/inventory",
-"../modules/item/item"
+"../modules/inventory-list/inventory-list",
+"../modules/inventory-view/inventory-view"
 ;
+
+html{
+    font-family: 'Lato', sans-serif;
+}
+body{
+    background-color: lighten($primary, 50%);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Arvo', serif;
+}
+
+#main{
+    display: flex;
+    overflow: hidden;
+    padding: 0;
+    border: lighten($primary, 20%);
+    background-color: white;
+}
+

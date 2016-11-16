@@ -1,0 +1,11 @@
+@import "./components/item/item";
+
+.inventory-view{
+
+    .inventory-view-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

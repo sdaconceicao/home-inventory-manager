@@ -1,0 +1,10 @@
+.item{
+    flex: 1;
+    width: 200px;
+    height: 200px;
+    border: 1px solid $primary;
+    margin : 15px 15px 15px 0px;
+    padding: 15px;
+    background-color: $secondary;
+    color: $secondary-text;
+}

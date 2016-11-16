@@ -1,5 +1,7 @@
-<modal instance="ctrl.$uibModalInstance">
+<modal class="modal-confirm" instance="ctrl.$uibModalInstance">
     <div>{{ctrl.message}}</div>
-    <button ng-click="ctrl.accept()">Yes</button>
-    <button ng-click="ctrl.reject()">No</button>
+    <div class="modal-footer">
+        <button class="btn-danger btn-md" ng-click="ctrl.accept()">Yes</button>
+        <button class="btn-primary btn-md" ng-click="ctrl.reject()">No</button>
+    </div>
 </modal>

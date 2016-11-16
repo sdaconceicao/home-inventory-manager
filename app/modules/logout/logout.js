@@ -1,14 +1,10 @@
-/* global angular, module, require */
-'use strict';
-
 let ctrl = require('./logout-controller'),
-    svc = require('./logout-service')
-    ;
+    svc = require('./logout-service');
 
 module.exports = angular.module('him.logout', [])
     .constant('logoutConfig', {
         animation: true,
-        templateUrl: 'logout/logout.html',
+        template: require('./logout.html'),
         controller: 'LogoutCtrl',
         controllerAs: 'ctrl',
         size: 'sm'

@@ -1,7 +1,6 @@
-'use strict';
-
 class ModalConfirmCtrl{
 
+    /* @ngInject */
     constructor($uibModalInstance, message){
         this.$uibModalInstance = $uibModalInstance;
         this.message = message;

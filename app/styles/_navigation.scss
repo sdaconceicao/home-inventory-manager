@@ -1,0 +1,35 @@
+.content-nav{
+    flex: 1;
+    max-width: 200px;
+    min-width: 200px;
+    border: 1px solid #888;
+    background-color: #0b97c4;
+    position: relative;
+    &:empty{
+        display:none;
+        & + .content-main{
+            width: 100%;
+        }
+    }
+    h2{
+        font-size: 2rem;
+        margin-left: 10px;
+        margin-top: 10px;
+        color: white;
+    }
+    .list-options{
+        position:absolute;
+        right: 5px;
+        top: 0;
+        a{
+            color: white;
+        }
+    }
+    .list-add{
+        background-color: white;
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+}

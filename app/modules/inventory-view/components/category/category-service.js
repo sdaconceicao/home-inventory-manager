@@ -1,9 +1,8 @@
 'use strict';
 
 class CategoryService{
-    constructor(RestService, uri){
-        this.RestService = RestService;
-        this.uri = uri;
+    constructor(HttpService){
+        this.HttpService = HttpService;
     }
 
     toString(){
@@ -11,10 +10,10 @@ class CategoryService{
     }
 
     getCategoriesForUser(id){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'GET',
-                url: `${this.uri.api}/users/${id}/categories`
+                url: `/users/${id}/categories`
             }
         );
     }

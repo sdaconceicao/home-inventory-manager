@@ -1,8 +1,6 @@
-'use strict';
 
 let dir = require('./item-directive'),
-    svc = require('./item-service')
-    ;
+    svc = require('./item-service');
 
 module.exports = angular.module('him.item', [])
     .directive('item', dir)

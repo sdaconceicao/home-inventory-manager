@@ -3,27 +3,26 @@
 
 
 class LoginService {
-    constructor(RestService, uri){
-        this.RestService = RestService;
-        this.uri = uri;
+    constructor(HttpService){
+        this.HttpService = HttpService;
     }
     toString(){
         return 'LoginService';
     }
     login(credentials){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'POST',
-                url:  `${this.uri.api}/users/login?include=user`,
+                url:  `/users/login?include=user`,
                 data: credentials
             }
         );
     }
     register(params){
-        return this.RestService.call(
+        return this.HttpService.call(
             {
                 method: 'POST',
-                url: `${this.uri.api}/users`,
+                url: `/users`,
                 data: params
             }
         );

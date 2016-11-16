@@ -1,23 +1,36 @@
-/* $, global angular, module, require */
-'use strict';
-
 class NavMenuCtrl{
     /* @ngInject */
-    constructor($uibModal, $rootScope,
+    constructor($uibModal, $rootScope, $element,
                 SessionService, EventMediator,
                 logoutConfig, loginConfig){
+        this.$element = $element;
         this.SessionService = SessionService;
         this.EventMediator = EventMediator;
         this.$uibModal = $uibModal;
         this.$rootScope = $rootScope;
         this.logoutConfig = logoutConfig;
         this.loginConfig = loginConfig;
-        this.loggedIn = this.SessionService.getSession().loggedIn;
-        this.EventMediator.subscribe(this.$rootScope, 'session-updated', (session) => this.onSessionUpdated(session) );
     }
 
     toString(){
         return "NavMenuCtrl";
+    }
+
+    $onInit(){
+        this.loggedIn = this.SessionService.getSession().loggedIn;
+        this.EventMediator.subscribe(this.$rootScope, 'session-updated', (session) => this.onSessionUpdated(session) );
+    }
+
+    $postLink(){
+        let navTop = this.$element.offset().top;
+        $(window).bind("scroll",  ()=> {
+            let scrollTop = $(window).scrollTop();
+            if (scrollTop > navTop) {
+                $(this.$element).find('ul').addClass('fixed');
+            } else {
+                $(this.$element).find('ul').removeClass('fixed');
+            }
+        });
     }
 
     onSessionUpdated(session){
@@ -35,17 +48,12 @@ class NavMenuCtrl{
 
 }
 
-const navMenu = /* @ngInject */() => {
-    return {
-        templateUrl: 'nav-menu/nav-menu.html',
-        restrict: 'E',
-        replace: true,
-        controller: NavMenuCtrl,
-        controllerAs: 'ctrl',
-        bindToController: true
-    };
+const navMenuDirectiveConfig = {
+    template: require('./nav-menu.html'),
+    replace: true,
+    controller: NavMenuCtrl
 };
 
 module.exports = angular.module('him.navMenu', [])
-    .directive('navMenu', navMenu)
+    .component('navMenu', navMenuDirectiveConfig)
 ;

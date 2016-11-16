@@ -1,20 +1,30 @@
-<modal instance="ctrl.$uibModalInstance">
+<modal instance="ctrl.$uibModalInstance" class="modal-login">
+    <h1>Login</h1>
     <form name="loginForm">
-        <label for="email">Email Address</label>
-        <input id="email" name="email" type="text" ng-model="ctrl.credentials.email" />
-        <label for="password">Password</label>
-        <input id="password" name="password" type="{{ctrl.inputType}}" ng-model="ctrl.credentials.password" />
-        <input id="showPassword" name="showPassword" type="checkbox"
-               ng-model="ctrl.inputType"
-               ng-true-value="'text'"
-               ng-false-value="'password'">
-        <label for="showPassword">Show Password</label>
-        <button type="button" ng-click="ctrl.login()" ng-if="ctrl.mode === 'login'">Login</button>
-        <button type="button" ng-click="ctrl.register()" ng-if="ctrl.mode === 'register'">Register</button>
+        <ul>
+            <li>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" ng-model="ctrl.credentials.email" />
+            </li>
+            <li>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="{{ctrl.inputType}}" ng-model="ctrl.credentials.password" />
+            </li>
+            <li>
+                <input id="showPassword" name="showPassword" type="checkbox"
+                       ng-model="ctrl.inputType"
+                       ng-true-value="'text'"
+                       ng-false-value="'password'">
+                <label for="showPassword">Show Password</label>
+            </li>
+        </ul>
     </form>
-    <register ng-if="ctrl.mode === 'register'"></register>
-    <button ng-click="ctrl.registerToggle()">
-        <span  ng-if="ctrl.mode === 'login'">Or Register</span>
-        <span  ng-if="ctrl.mode === 'register'">Or Login</span>
-    </button>
+    <div class="modal-footer">
+        <button class="btn-primary btn-md" type="button" ng-click="ctrl.login()" ng-if="ctrl.mode === 'login'">Login</button>
+        <button class="btn-primary btn-md" type="button" ng-click="ctrl.register()" ng-if="ctrl.mode === 'register'">Create Account</button>
+        <button class="btn-default btn-md" ng-click="ctrl.registerToggle()">
+            <span ng-if="ctrl.mode === 'login'">Or Register</span>
+            <span ng-if="ctrl.mode === 'register'">Or Login</span>
+        </button>
+    </div>
 </modal>

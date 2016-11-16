@@ -9,16 +9,13 @@ let oath = require('./config/oath'),
     login = require('./modules/login/login'),
     logout = require('./modules/logout/logout'),
     dashboard = require('./modules/dashboard/dashboard'),
-    inventory = require('./modules/inventory/inventory'),
-    item = require('./modules/item/item'),
     inventoryView = require('./modules/inventory-view/inventory-view'),
-    category = require('./modules/category/category'),
+    inventoryList = require('./modules/inventory-list/inventory-list'),
     dependencies = ['ngAnimate', 'ui.router', 'ui.bootstrap', 'satellizer', 'ngStorage', 'xeditable',
         'him.templates',
-        components.name, home.name, login.name, logout.name, dashboard.name, inventory.name, item.name,
-        inventoryView.name, category.name
-    ]
-;
+        components.name, home.name, login.name, logout.name, dashboard.name,
+        inventoryView.name, inventoryList.name
+    ];
 
 angular.module('him', dependencies)
     .constant('oath', oath)
@@ -38,13 +35,26 @@ angular.module('him', dependencies)
             abstract: true,
             data: {
                 requireLogin: true
+            },
+            resolve: {
+                inventories: (InventoryService, SessionService)=>{
+                    return InventoryService.getInventoriesForUser(SessionService.getUser().id);
+                }
+            },
+            views: {
+                'contentNav@': {
+                    component: 'inventoryList',
+                    bindings: {
+                        inventories: 'inventories'
+                    }
+                }
             }
         });
         $httpProvider.interceptors.push('SessionInjector');
     })
     .run(/* @ngInject */ ($templateCache, $rootScope, $state, $uibModal,
                           SessionService, editableOptions,
-                          loginConfig)=>{
+                          loginConfig, HttpService, uri)=>{
         $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
             let requireLogin = toState.data.requireLogin;
 
@@ -54,6 +64,8 @@ angular.module('him', dependencies)
                 $uibModal.open(loginConfig);
             }
         });
+        HttpService.configure(uri);
         editableOptions.theme = 'bs3';
+
     })
 ;

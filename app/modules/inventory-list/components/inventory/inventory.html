@@ -1,0 +1,15 @@
+<form editable-form name="editableForm" shown="ctrl.shown" onaftersave="ctrl.save()" class="inventory">
+    <a ui-sref="app.inventory({id: ctrl.data.id})"
+       editable-text="ctrl.data.name"
+       class="inventory-name"
+       ng-click="ctrl.selected()">{{ctrl.data.name}}</a>
+    <div ng-if="!editableForm.$visible  && ctrl.editable"
+         class="list-options">
+        <a ng-click="ctrl.edit()"><span class="fa fa-edit"></span></a>
+        <a ng-click="ctrl.deleteConfirm()"><span class="fa fa-trash"></span></a>
+    </div>
+    <div ng-if="editableForm.$visible">
+        <button type="submit"><span class="fa fa-save">Save</span></button>
+        <a ng-click="ctrl.cancel(editableForm)">Cancel</a>
+    </div>
+</form>
